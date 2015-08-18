@@ -7,5 +7,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  %body
-    = yield
+  %body{ class: page_class }
+    .container-fluid
+      .row.content
+        .col-md-8.col-offset-2
+          = yield
