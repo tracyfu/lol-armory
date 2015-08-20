@@ -1,0 +1,22 @@
+// Typography
+$base-px: 15px;
+$helvetica-neue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+@mixin font {
+  font: 400 #{$base-px}/1.5 $helvetica-neue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function em($target-px, $context-px: $base-px) {
+  @return ($target-px / $context-px) * 1em;
+}
+
+// Mixins: Utilities
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}

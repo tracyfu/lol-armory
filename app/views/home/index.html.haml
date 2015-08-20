@@ -1,0 +1,7 @@
+%section.champions
+  %ul
+    - @champions.each do |champion|
+      %li
+        = image_tag "http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{champion['image']['full']}"
+        = champion['name']
+

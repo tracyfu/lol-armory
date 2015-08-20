@@ -1,2 +1,18 @@
+// Vendor
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+// App
+@import 'scss';
+
+body {
+  @include font;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+// Views
+@import 'views/home';
