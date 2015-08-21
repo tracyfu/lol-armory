@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.3'
+gem 'mysql2'
 
 gem 'haml-rails', '~> 0.9'
 gem 'sass-rails', '~> 5.0'
@@ -29,8 +30,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3'
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

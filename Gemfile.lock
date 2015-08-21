@@ -110,6 +110,7 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    mysql2 (0.3.19)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -171,7 +172,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     sshkit (1.7.1)
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
@@ -209,12 +209,12 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
+  mysql2
   rails (= 4.2.3)
   ruby-lol
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
-  sqlite3
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
