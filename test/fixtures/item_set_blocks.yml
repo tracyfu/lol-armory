@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: item_set_blocks
+#
+#  id                  :integer          not null, primary key
+#  item_set_id         :integer
+#  item_id             :integer
+#  type                :string(255)
+#  recMath             :boolean
+#  minSummonerLevel    :integer
+#  maxSummonerLevel    :integer
+#  showIfSummonerSpell :string(255)
+#  hideIfSummonerSpell :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  recMath: false
+  minSummonerLevel: 1
+  maxSummonerLevel: 1
+  showIfSummonerSpell: MyString
+  hideIfSummonerSpell: MyString
+
+two:
+  type: 
+  recMath: false
+  minSummonerLevel: 1
+  maxSummonerLevel: 1
+  showIfSummonerSpell: MyString
+  hideIfSummonerSpell: MyString
