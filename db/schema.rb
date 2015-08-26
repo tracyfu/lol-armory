@@ -51,15 +51,15 @@ ActiveRecord::Schema.define(version: 20150826091947) do
   add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "item_set_blocks", force: :cascade do |t|
-    t.integer  "item_set_id",         limit: 4
-    t.string   "block_type",          limit: 255
-    t.string   "hideIfSummonerSpell", limit: 255
-    t.string   "showIfSummonerSpell", limit: 255
+    t.integer  "item_set_id",            limit: 4
+    t.string   "block_type",             limit: 255
+    t.string   "hide_if_summoner_spell", limit: 255
+    t.string   "show_if_summoner_spell", limit: 255
     t.boolean  "recMath"
-    t.integer  "minSummonerLevel",    limit: 4
-    t.integer  "maxSummonerLevel",    limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "min_summoner_level",     limit: 4
+    t.integer  "max_summoner_level",     limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "item_set_blocks", ["item_set_id"], name: "index_item_set_blocks_on_item_set_id", using: :btree
@@ -94,26 +94,26 @@ ActiveRecord::Schema.define(version: 20150826091947) do
 
   create_table "items", force: :cascade do |t|
     t.boolean  "consumed"
-    t.boolean  "consumeOnFull"
-    t.boolean  "hideFromAll"
-    t.boolean  "inStore"
-    t.integer  "depth",                limit: 4
-    t.integer  "specialRecipe",        limit: 4
-    t.integer  "stacks",               limit: 4
-    t.string   "colloq",               limit: 255
-    t.string   "from",                 limit: 255
-    t.string   "group",                limit: 255
-    t.string   "into",                 limit: 255
-    t.string   "name",                 limit: 255
-    t.string   "requiredChampion",     limit: 255
-    t.text     "description",          limit: 65535
-    t.text     "effect",               limit: 65535
-    t.text     "plaintext",            limit: 65535
-    t.text     "sanitizedDescription", limit: 65535
-    t.text     "stats",                limit: 65535
-    t.text     "tags",                 limit: 65535
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.boolean  "consume_on_full"
+    t.boolean  "hide_from_all"
+    t.boolean  "in_store"
+    t.integer  "depth",                 limit: 4
+    t.integer  "special_recipe",        limit: 4
+    t.integer  "stacks",                limit: 4
+    t.string   "colloq",                limit: 255
+    t.string   "from",                  limit: 255
+    t.string   "group",                 limit: 255
+    t.string   "into",                  limit: 255
+    t.string   "name",                  limit: 255
+    t.string   "required_champion",     limit: 255
+    t.text     "description",           limit: 65535
+    t.text     "effect",                limit: 65535
+    t.text     "plaintext",             limit: 65535
+    t.text     "sanitized_description", limit: 65535
+    t.text     "stats",                 limit: 65535
+    t.text     "tags",                  limit: 65535
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
 end

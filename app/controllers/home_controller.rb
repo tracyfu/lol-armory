@@ -9,12 +9,13 @@ class HomeController < ApplicationController
   def import
     require 'lol'
 
-    client = Lol::Client.new Rails.application.secrets.lol_api_key, { region: 'na' }
+    client    = Lol::Client.new Rails.application.secrets.lol_api_key, { region: 'na' }
     champions = client.static.champion.get(champData: 'all')
-    items = client.static.item.get(itemListData: 'all')
+    items     = client.static.item.get(itemListData: 'all')
 
     items.each do |i|
-      i = i.to_h
+      i    = i.to_h
+      i    = Hash[i.map { |k, v| [k.to_s.underscore.to_sym, v] }]
       item = Item.new(i.except(:image, :gold))
 
       if item.save
@@ -68,7 +69,7 @@ class HomeController < ApplicationController
               item_set_block.save
 
               block[:items].each do |item|
-                item.symbolize_keys!
+                item                  = Hash[item.map { |k, v| [k.to_s.underscore.to_sym, v] }]
                 item[:item_set]       = item_set
                 item[:item_set_block] = item_set_block
                 item[:item]           = Item.find(item.delete :id)
