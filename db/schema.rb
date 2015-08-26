@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826075904) do
+ActiveRecord::Schema.define(version: 20150826091947) do
+
+  create_table "champions", id: false, force: :cascade do |t|
+    t.integer  "id",         limit: 4
+    t.string   "key",        limit: 255
+    t.string   "name",       limit: 255
+    t.string   "title",      limit: 255
+    t.text     "tags",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "costs", force: :cascade do |t|
     t.integer  "item_id",     limit: 4
@@ -65,15 +75,18 @@ ActiveRecord::Schema.define(version: 20150826075904) do
   end
 
   create_table "item_sets", force: :cascade do |t|
+    t.integer  "champion_id", limit: 4
     t.boolean  "priority"
-    t.integer  "sortrank",   limit: 4
-    t.string   "map",        limit: 255
-    t.string   "mode",       limit: 255
-    t.string   "title",      limit: 255
-    t.string   "type",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "sortrank",    limit: 4
+    t.string   "map",         limit: 255
+    t.string   "mode",        limit: 255
+    t.string   "title",       limit: 255
+    t.string   "type",        limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
+
+  add_index "item_sets", ["champion_id"], name: "index_item_sets_on_champion_id", using: :btree
 
   create_table "items", id: false, force: :cascade do |t|
     t.boolean  "consumed"

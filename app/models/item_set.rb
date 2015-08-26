@@ -2,18 +2,20 @@
 #
 # Table name: item_sets
 #
-#  id         :integer          not null, primary key
-#  title      :string(255)
-#  type       :string(255)
-#  map        :string(255)
-#  mode       :string(255)
-#  priority   :boolean
-#  sortrank   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  champion_id :integer
+#  priority    :boolean
+#  sortrank    :integer
+#  map         :string(255)
+#  mode        :string(255)
+#  title       :string(255)
+#  type        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class ItemSet < ActiveRecord::Base
   has_many :item_set_blocks
   has_many :item_set_items, through: :item_set_blocks
+  belongs_to :champion
 end
