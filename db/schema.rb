@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20150826091947) do
     t.string   "mode",        limit: 255
     t.string   "title",       limit: 255
     t.string   "set_type",    limit: 255
+    t.string   "created_by",  limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

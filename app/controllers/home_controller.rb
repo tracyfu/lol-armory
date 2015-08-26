@@ -51,9 +51,10 @@ class HomeController < ApplicationController
 
           unless recommended_set.nil?
             recommended_set.symbolize_keys!
-            recommended_set[:champion] = champion
-            recommended_set[:map]      = 'SR'
-            recommended_set[:set_type] = recommended_set.delete :type
+            recommended_set[:champion]   = champion
+            recommended_set[:map]        = 'SR'
+            recommended_set[:set_type]   = recommended_set.delete :type
+            recommended_set[:created_by] = 'Riot'
 
             item_set = ItemSet.new(recommended_set.except :blocks)
             item_set.save
