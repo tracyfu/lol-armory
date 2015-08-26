@@ -4,12 +4,12 @@ class CreateItemSetBlocks < ActiveRecord::Migration
       t.belongs_to :item_set, index: true
       t.belongs_to :item, index: true
 
-      t.string :type
+      t.string  :type
+      t.string  :hideIfSummonerSpell
+      t.string  :showIfSummonerSpell
       t.boolean :recMath
       t.integer :minSummonerLevel
       t.integer :maxSummonerLevel
-      t.string :showIfSummonerSpell
-      t.string :hideIfSummonerSpell
 
       t.timestamps null: false
     end

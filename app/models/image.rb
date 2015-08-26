@@ -18,4 +18,8 @@
 
 class Image < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
+
+  def imageable_type=(class_name)
+    super(class_name.constantize.base_class.to_s)
+  end
 end
