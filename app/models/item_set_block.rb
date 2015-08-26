@@ -4,7 +4,7 @@
 #
 #  id                  :integer          not null, primary key
 #  item_set_id         :integer
-#  type                :string(255)
+#  block_type          :string(255)
 #  hideIfSummonerSpell :string(255)
 #  showIfSummonerSpell :string(255)
 #  recMath             :boolean
@@ -15,6 +15,7 @@
 #
 
 class ItemSetBlock < ActiveRecord::Base
+  has_many :item_set_items
   has_many :items, through: :item_set_items
   belongs_to :item_set
 end

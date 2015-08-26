@@ -12,4 +12,7 @@
 #
 
 class ItemSetItem < ActiveRecord::Base
+  belongs_to :item_set
+  belongs_to :item_set_block
+  belongs_to :item
 end

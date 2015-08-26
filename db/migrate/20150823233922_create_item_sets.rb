@@ -8,7 +8,7 @@ class CreateItemSets < ActiveRecord::Migration
       t.string  :map
       t.string  :mode
       t.string  :title
-      t.string  :type
+      t.string  :set_type
 
       t.timestamps null: false
     end

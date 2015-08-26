@@ -2,7 +2,7 @@
 #
 # Table name: champions
 #
-#  id         :integer
+#  id         :integer          not null, primary key
 #  key        :string(255)
 #  name       :string(255)
 #  title      :string(255)

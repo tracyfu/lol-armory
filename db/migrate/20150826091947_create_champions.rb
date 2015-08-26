@@ -1,7 +1,6 @@
 class CreateChampions < ActiveRecord::Migration
   def change
-    create_table :champions, id: false do |t|
-      t.integer :id
+    create_table :champions do |t|
       t.string  :key
       t.string  :name
       t.string  :title

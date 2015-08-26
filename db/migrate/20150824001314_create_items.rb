@@ -1,12 +1,11 @@
 class CreateItems < ActiveRecord::Migration
   def change
-    create_table :items, id: false do |t|
+    create_table :items do |t|
       t.boolean :consumed
       t.boolean :consumeOnFull
       t.boolean :hideFromAll
       t.boolean :inStore
       t.integer :depth
-      t.integer :id
       t.integer :specialRecipe
       t.integer :stacks
       t.string  :colloq

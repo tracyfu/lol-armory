@@ -4,7 +4,7 @@
 #
 #  id                  :integer          not null, primary key
 #  item_set_id         :integer
-#  type                :string(255)
+#  block_type          :string(255)
 #  hideIfSummonerSpell :string(255)
 #  showIfSummonerSpell :string(255)
 #  recMath             :boolean

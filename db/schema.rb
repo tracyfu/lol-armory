@@ -13,8 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150826091947) do
 
-  create_table "champions", id: false, force: :cascade do |t|
-    t.integer  "id",         limit: 4
+  create_table "champions", force: :cascade do |t|
     t.string   "key",        limit: 255
     t.string   "name",       limit: 255
     t.string   "title",      limit: 255
@@ -53,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150826091947) do
 
   create_table "item_set_blocks", force: :cascade do |t|
     t.integer  "item_set_id",         limit: 4
-    t.string   "type",                limit: 255
+    t.string   "block_type",          limit: 255
     t.string   "hideIfSummonerSpell", limit: 255
     t.string   "showIfSummonerSpell", limit: 255
     t.boolean  "recMath"
@@ -74,6 +73,10 @@ ActiveRecord::Schema.define(version: 20150826091947) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "item_set_items", ["item_id"], name: "index_item_set_items_on_item_id", using: :btree
+  add_index "item_set_items", ["item_set_block_id"], name: "index_item_set_items_on_item_set_block_id", using: :btree
+  add_index "item_set_items", ["item_set_id"], name: "index_item_set_items_on_item_set_id", using: :btree
+
   create_table "item_sets", force: :cascade do |t|
     t.integer  "champion_id", limit: 4
     t.boolean  "priority"
@@ -81,20 +84,19 @@ ActiveRecord::Schema.define(version: 20150826091947) do
     t.string   "map",         limit: 255
     t.string   "mode",        limit: 255
     t.string   "title",       limit: 255
-    t.string   "type",        limit: 255
+    t.string   "set_type",    limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
   add_index "item_sets", ["champion_id"], name: "index_item_sets_on_champion_id", using: :btree
 
-  create_table "items", id: false, force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.boolean  "consumed"
     t.boolean  "consumeOnFull"
     t.boolean  "hideFromAll"
     t.boolean  "inStore"
     t.integer  "depth",                limit: 4
-    t.integer  "id",                   limit: 4
     t.integer  "specialRecipe",        limit: 4
     t.integer  "stacks",               limit: 4
     t.string   "colloq",               limit: 255

@@ -2,12 +2,12 @@
 #
 # Table name: items
 #
+#  id                   :integer          not null, primary key
 #  consumed             :boolean
 #  consumeOnFull        :boolean
 #  hideFromAll          :boolean
 #  inStore              :boolean
 #  depth                :integer
-#  id                   :integer
 #  specialRecipe        :integer
 #  stacks               :integer
 #  colloq               :string(255)
