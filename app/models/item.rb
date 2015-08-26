@@ -27,9 +27,6 @@
 #
 
 class Item < ActiveRecord::Base
-  has_many :item_set_blocks
   has_many :images, as: :imageable, dependent: :destroy
-  has_many :ingredients, class_name: "Item", foreign_key: "recipe_id"
   has_one :cost
-  belongs_to :recipe, class_name: "Item"
 end

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: item_set_items
+#
+#  id                :integer          not null, primary key
+#  item_set_id       :integer
+#  item_set_block_id :integer
+#  item_id           :integer
+#  count             :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_set_id: 1
+  item_set_block_id: 1
+  item_id: 1
+  count: 1
+
+two:
+  item_set_id: 1
+  item_set_block_id: 1
+  item_id: 1
+  count: 1

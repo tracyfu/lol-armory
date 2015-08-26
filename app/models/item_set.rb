@@ -15,5 +15,5 @@
 
 class ItemSet < ActiveRecord::Base
   has_many :item_set_blocks
-  has_many :items, through: :item_set_blocks
+  has_many :item_set_items, through: :item_set_blocks
 end

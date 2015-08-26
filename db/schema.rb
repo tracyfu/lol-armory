@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826021457) do
+ActiveRecord::Schema.define(version: 20150826075904) do
 
   create_table "costs", force: :cascade do |t|
     t.integer  "item_id",     limit: 4
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150826021457) do
 
   create_table "item_set_blocks", force: :cascade do |t|
     t.integer  "item_set_id",         limit: 4
-    t.integer  "item_id",             limit: 4
     t.string   "type",                limit: 255
     t.string   "hideIfSummonerSpell", limit: 255
     t.string   "showIfSummonerSpell", limit: 255
@@ -54,8 +53,16 @@ ActiveRecord::Schema.define(version: 20150826021457) do
     t.datetime "updated_at",                      null: false
   end
 
-  add_index "item_set_blocks", ["item_id"], name: "index_item_set_blocks_on_item_id", using: :btree
   add_index "item_set_blocks", ["item_set_id"], name: "index_item_set_blocks_on_item_set_id", using: :btree
+
+  create_table "item_set_items", force: :cascade do |t|
+    t.integer  "item_set_id",       limit: 4
+    t.integer  "item_set_block_id", limit: 4
+    t.integer  "item_id",           limit: 4
+    t.integer  "count",             limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "item_sets", force: :cascade do |t|
     t.boolean  "priority"
