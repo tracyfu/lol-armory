@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825163407) do
+ActiveRecord::Schema.define(version: 20150826020246) do
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "imageable_id",   limit: 4
+    t.string   "imageable_type", limit: 255
+    t.string   "full",           limit: 255
+    t.string   "sprite",         limit: 255
+    t.string   "group",          limit: 255
+    t.integer  "x",              limit: 4
+    t.integer  "y",              limit: 4
+    t.integer  "w",              limit: 4
+    t.integer  "h",              limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "item_set_blocks", force: :cascade do |t|
     t.integer  "item_set_id",         limit: 4
