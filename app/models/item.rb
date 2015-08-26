@@ -11,6 +11,8 @@
 #  plaintext            :text(65535)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  tags                 :text(65535)
+#  stats                :text(65535)
 #
 
 class Item < ActiveRecord::Base
