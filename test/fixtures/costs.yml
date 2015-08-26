@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: costs
+#
+#  id          :integer          not null, primary key
+#  item_id     :integer
+#  base        :integer
+#  total       :integer
+#  sell        :integer
+#  purchasable :boolean
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  base: 1
+  total: 1
+  sell: 1
+  purchasable: false
+
+two:
+  base: 1
+  total: 1
+  sell: 1
+  purchasable: false

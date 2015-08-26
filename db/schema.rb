@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826020246) do
+ActiveRecord::Schema.define(version: 20150826021457) do
+
+  create_table "costs", force: :cascade do |t|
+    t.integer  "item_id",     limit: 4
+    t.integer  "base",        limit: 4
+    t.integer  "total",       limit: 4
+    t.integer  "sell",        limit: 4
+    t.boolean  "purchasable"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "costs", ["item_id"], name: "index_costs_on_item_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.integer  "imageable_id",   limit: 4

@@ -17,5 +17,6 @@ class Item < ActiveRecord::Base
   has_many :item_set_blocks
   has_many :images, as: :imageable
   has_many :ingredients, class_name: "Item", foreign_key: "ingredient_id"
+  has_one :cost
   belongs_to :recipe, class_name: "Item"
 end
