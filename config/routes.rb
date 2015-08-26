@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :items, only: :index do
+    collection do
+      post 'import'
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
