@@ -13,6 +13,16 @@
 #  updated_at           :datetime         not null
 #  tags                 :text(65535)
 #  stats                :text(65535)
+#  colloq               :string(255)
+#  consumed             :boolean
+#  consumeOnFull        :boolean
+#  depth                :integer
+#  effect               :text(65535)
+#  hideFromAll          :boolean
+#  inStore              :boolean
+#  requiredChampion     :string(255)
+#  specialRecipe        :integer
+#  stacks               :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

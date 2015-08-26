@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826022742) do
+ActiveRecord::Schema.define(version: 20150826041733) do
 
   create_table "costs", force: :cascade do |t|
     t.integer  "item_id",     limit: 4
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 20150826022742) do
     t.datetime "updated_at",                         null: false
     t.text     "tags",                 limit: 65535
     t.text     "stats",                limit: 65535
+    t.string   "colloq",               limit: 255
+    t.boolean  "consumed"
+    t.boolean  "consumeOnFull"
+    t.integer  "depth",                limit: 4
+    t.text     "effect",               limit: 65535
+    t.boolean  "hideFromAll"
+    t.boolean  "inStore"
+    t.string   "requiredChampion",     limit: 255
+    t.integer  "specialRecipe",        limit: 4
+    t.integer  "stacks",               limit: 4
   end
 
   add_index "items", ["recipe_id"], name: "index_items_on_recipe_id", using: :btree
