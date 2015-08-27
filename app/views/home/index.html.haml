@@ -2,6 +2,6 @@
   %ul
     - @champions.each do |champion|
       %li
-        = image_tag "http://ddragon.leagueoflegends.com/cdn/5.15.1/img/champion/#{champion.images.first.full}"
+        = champion_image_tag(champion.images.first.full)
         = champion.name
 
