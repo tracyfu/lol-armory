@@ -2,6 +2,7 @@
   %ul
     - @champions.each do |champion|
       %li
-        = champion_image_tag(champion.images.first.full)
-        = champion.name
+        %button.champion
+          = champion_image_tag(champion.images.first.full)
+          %span.name= champion.name
 

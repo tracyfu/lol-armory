@@ -5,6 +5,10 @@
 // App
 @import 'scss';
 
+* {
+  outline: none;
+}
+
 body {
   @include font;
 }

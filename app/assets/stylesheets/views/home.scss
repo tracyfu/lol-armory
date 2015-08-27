@@ -1,10 +1,31 @@
 .home.index {
-  .champions li {
-    margin-bottom: 15px;
+  .champions {
+    ul {
+      margin: 0 -6px;
 
-    img {
-      transform: translate(50%, 50%);
-      width: 50px;
+      li {
+        float: left;
+        margin-bottom: 12px;
+        padding: 0 6px;
+        text-align: center;
+        width: 10%;
+      }
+    }
+
+    .champion {
+      background: none;
+      border: 0;
+      padding: 0;
+
+      .image {
+        border-radius: 100%;
+        width: 100%;
+      }
+
+      .name {
+        display: block;
+        font-size: em(11px);
+      }
     }
   }
 }
