@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :champions, only: :show
   resources :items, only: :index
 
   # get 'import', to: 'home#import'
