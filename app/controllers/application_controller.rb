@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def get_champions
-    @champions = Champion.includes(:images)
+    @champions = Champion.includes(:images).order(:name)
   end
 end
