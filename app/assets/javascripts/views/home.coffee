@@ -8,7 +8,7 @@ class LoLA.Views.Home
       .error (response) ->
         throw new Error 'Champion could not be found'
       .success (response) =>
-        @updateMasthead(response)
+        @updateMasthead(response.champion)
 
   updateMasthead: (champion) ->
     $masthead = $('.champion.masthead')
