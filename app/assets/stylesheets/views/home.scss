@@ -1,6 +1,7 @@
 .home.index {
-  .champions {
+  section.champions {
     ul {
+      @include clearfix;
       margin: 0 -6px;
 
       li {
@@ -26,6 +27,19 @@
         display: block;
         font-size: em(11px);
       }
+    }
+  }
+
+  header.champion.masthead {
+    @include clearfix;
+
+    .image {
+      float: left;
+    }
+
+    .details {
+      float: left;
+      margin: 0 15px;
     }
   }
 }

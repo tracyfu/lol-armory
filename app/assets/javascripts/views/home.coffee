@@ -1,5 +1,7 @@
 class LoLA.Views.Home
   constructor: ->
-    $('.champion').on 'click', => @loadChampion()
+    that = this
 
-  loadChampion: ->
+    $('.champion').on 'click', -> that.loadChampion($(this))
+
+  loadChampion: ($champion) ->

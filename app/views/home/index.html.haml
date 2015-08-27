@@ -2,9 +2,17 @@
   %ul
     - @champions.each do |champion|
       %li
-        %button.champion
+        %button.champion{ "data-id": champion.id }
           = champion_image_tag(champion.images.first.full)
           %span.name= champion.name
+
+%header.champion.masthead
+  = champion_image_tag(@default_champion.images.first.full)
+
+  .details
+    %h1.name= @default_champion.name
+    %p.title= @default_champion.title
+    %p.roles= eval(@default_champion.tags).join(', ')
 
 :coffee
   $ -> view = new LoLA.Views.Home()
