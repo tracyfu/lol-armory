@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: :index
 
-  get 'import', to: 'home#import'
+  # get 'import', to: 'home#import'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
