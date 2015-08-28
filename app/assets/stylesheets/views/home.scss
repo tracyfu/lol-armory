@@ -1,12 +1,12 @@
 .home.index {
   section.champions {
-    height: 33.3vh;
     margin: 30px auto;
-    overflow-y: scroll;
 
     ul {
       @include clearfix;
+      height: 33.3vh;
       margin: 0 -6px;
+      overflow-y: scroll;
 
       li {
         float: left;
@@ -44,6 +44,18 @@
     .details {
       float: left;
       margin: 0 15px;
+    }
+  }
+
+  section.item-set {
+    .block {
+      h1 {
+        text-transform: capitalize;
+      }
+
+      .item {
+        display: inline-block;
+      }
     }
   }
 }

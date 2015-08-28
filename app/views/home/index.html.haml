@@ -15,7 +15,15 @@
     %p.roles= eval(@default_champion.tags).join(', ')
 
 %section.item-set
+  %h1 Recommended
 
+  - @default_champion.recommended_item_set.item_set_blocks.each do |block|
+    %section.block
+      %h1= block.block_type.gsub('jungle', ' jungle').humanize
+
+      - block.items.each do |item|
+        .item{ "data-id": item.id }
+          = item_image_tag(item.images.first)
 
 :coffee
   $ -> view = new LoLA.Views.Home()

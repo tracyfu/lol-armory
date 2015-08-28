@@ -28,7 +28,8 @@ class LoLA.Views.Home
     $('.item-set').empty()
 
     $.each @itemSet['item_set_blocks'], (blockIndex, block) ->
-      $('.item-set').append('<section><h1>' + block['block_type'] + '</h1></section>')
+      $('.item-set').append('<section class="block"><h1>' + block['block_type'].replace('_', ' ').replace('jungle', ' jungle') + '</h1></section>')
 
       $.each block['items'], (index, item) ->
-        $('.item-set section').eq(blockIndex).append('<div>' + item['name'] + '</div>')
+        html = JST['templates/item']({ id: item['id'], image: LoLA.Config.itemImageURL(item['images'][0]['full']) })
+        $('.item-set section').eq(blockIndex).append(html)
