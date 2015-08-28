@@ -6,7 +6,7 @@
           = champion_image_tag(champion.images.first, 'sprite')
           %span.name= champion.name
 
-%header.champion.masthead
+%header.champion.masthead{ "data-key": @default_champion.key }
   = champion_image_tag(@default_champion.images.first)
 
   .details
@@ -33,6 +33,8 @@
 
 %section.json
   %button.btn.btn-primary.create-button Create Item Set
+
+  .path
 
   %pre.json-output
 

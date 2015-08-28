@@ -48,6 +48,15 @@
   }
 
   section.json {
+    .path {
+      margin: 15px 0;
+
+      .champion,
+      .file {
+        font-weight: 700;
+      }
+    }
+
     .json-output {
       border: 1px solid $lt-gray;
       font-family: monospace;

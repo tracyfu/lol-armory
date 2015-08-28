@@ -1,6 +1,7 @@
 class LoLA.Views.Home
-  constructor: ->
+  constructor: () ->
     that = this
+    @champion = key: $('.champion.masthead').attr('data-key')
 
     $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
 
@@ -49,6 +50,11 @@ class LoLA.Views.Home
       $('.json-output').html('')
 
   generateItemSet: ->
+    path = 'C:\\Riot Games\\League of Legends\\Config\\Champions\\<span class="champion">' + @champion['key'] + '</span>\\Recommended\\'
+    file = '<span class="file">LoLA_ItemSet_' + (new Date()).toISOString().slice(0, 10).replace(/-/g,"") + '.json</file>'
+
+    $('.path').html(path + file)
+
     itemSet =
       title:    $('.item-set > h1').text()
       type:     'custom'
