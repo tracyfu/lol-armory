@@ -22,11 +22,14 @@
       %h1= block.block_type.gsub('jungle', ' jungle').humanize
 
       - block.items.each do |item|
-        .item{ "data-id": item.id }
+        .item{ "data-id": item.id, "data-toggle": 'popover' }
           = item_image_tag(item.images.first)
 
           .item-tooltip
-            = format_tooltip(item.description)
+            = item_image_tag(item.images.first, 'sprite')
+            .name= item.name
+            .cost #{item.cost.total}g
+            .description= format_item_tooltip(item.description)
 
 :coffee
   $ -> view = new LoLA.Views.Home()

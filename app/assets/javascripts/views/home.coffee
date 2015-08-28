@@ -1,6 +1,9 @@
 class LoLA.Views.Home
   constructor: ->
     that = this
+
+    $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
+
     $('.champion').on 'click', -> that.loadChampion($(this).data('id'))
 
   loadChampion: (id) ->
@@ -31,5 +34,14 @@ class LoLA.Views.Home
       $('.item-set').append('<section class="block"><h1>' + block['block_type'].replace('_', ' ').replace('jungle', ' jungle') + '</h1></section>')
 
       $.each block['items'], (index, item) ->
-        html = JST['templates/item']({ id: item['id'], image: LoLA.Config.itemImageURL(item['images'][0]['full']) })
+        data =
+          id:          item['id']
+          name:        item['name']
+          image:       LoLA.Config.itemImageURL(item['images'][0]['full'])
+          cost:        item['cost']['total']
+          description: item['description']
+
+        html = JST['templates/item'](data)
         $('.item-set section').eq(blockIndex).append(html)
+
+      $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }

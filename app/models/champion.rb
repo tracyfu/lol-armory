@@ -16,6 +16,6 @@ class Champion < ActiveRecord::Base
   has_many :item_sets
 
   def recommended_item_set
-    item_sets.includes(item_set_blocks: [:item_set_items, items: :images]).where("item_sets.created_by = 'riot' and item_sets.map = 'SR'").first
+    item_sets.includes(item_set_blocks: [:item_set_items, items: [:images, :cost]]).where("item_sets.created_by = 'riot' and item_sets.map = 'SR'").first
   end
 end

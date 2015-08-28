@@ -6,7 +6,13 @@ section.item-set .block .item {
     width: 50px;
   }
 
-  .tooltip {
-    // display: none;
+  .item-tooltip {
+    display: none;
+  }
+}
+
+section.item-set .block .popover {
+  .description div {
+    display: inline-block;
   }
 }
