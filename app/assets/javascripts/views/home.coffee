@@ -5,6 +5,7 @@ class LoLA.Views.Home
     $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
 
     $('.champion').on 'click', -> that.loadChampion($(this).data('id'))
+    $('.create-button').on 'click', => @generateItemSet()
 
   loadChampion: (id) ->
     $.ajax 'champions/' + id
@@ -28,10 +29,10 @@ class LoLA.Views.Home
     $masthead.find('.roles').html(roles)
 
   loadItemSet: ->
-    $('.item-set').empty()
+    $('.item-set .block').remove()
 
     $.each @itemSet['item_set_blocks'], (blockIndex, block) ->
-      $('.item-set').append('<section class="block"><h1>' + block['block_type'].replace('_', ' ').replace('jungle', ' jungle') + '</h1></section>')
+      $('.item-set').append('<section class="block"><h1>' + block['block_type'] + '</h1></section>')
 
       $.each block['items'], (index, item) ->
         data =
@@ -45,3 +46,39 @@ class LoLA.Views.Home
         $('.item-set section').eq(blockIndex).append(html)
 
       $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
+      $('.json-output').html('')
+
+  generateItemSet: ->
+    itemSet =
+      title:    $('.item-set > h1').text()
+      type:     'custom'
+      map:      'any'
+      mode:     'any'
+      priority: false
+      sortrank: 0
+      blocks:   []
+
+    $('.item-set .block').each ->
+      block =
+        type:                $(this).find('h1').text()
+        recMath:             false
+        minSummonerLevel:    -1
+        maxSummonerLevel:    -1
+        showIfSummonerSpell: ''
+        hideIfSummonerSpell: ''
+        items:               []
+
+      $(this).find('.item').each ->
+        block['items'].push({ id: $(this).attr('data-id'), count: 1 })
+
+      itemSet['blocks'].push(block)
+
+    $('.json-output').html(JSON.stringify(itemSet, null, 2))
+
+
+
+
+
+
+
+

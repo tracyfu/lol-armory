@@ -46,4 +46,16 @@
       margin: 0 15px;
     }
   }
+
+  section.json {
+    .json-output {
+      border: 1px solid $lt-gray;
+      font-family: monospace;
+      min-height: 33.3vh;
+      margin: 15px 0;
+      overflow: scroll;
+      padding: 15px;
+      white-space: pre;
+    }
+  }
 }

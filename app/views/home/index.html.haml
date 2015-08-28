@@ -31,5 +31,10 @@
             .cost #{item.cost.total}g
             .description= format_item_tooltip(item.description)
 
+%section.json
+  %button.btn.btn-primary.create-button Create Item Set
+
+  %pre.json-output
+
 :coffee
   $ -> view = new LoLA.Views.Home()
