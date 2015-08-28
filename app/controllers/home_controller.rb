@@ -64,7 +64,7 @@ class HomeController < ApplicationController
             recommended_set[:blocks].each do |block|
               block.symbolize_keys!
               block[:item_set]           = item_set
-              block[:block_type]         = (block.delete :type).gsub('jungle', ' jungle').humanize
+              block[:block_type]         = (block.delete :type).gsub('jungle', ' jungle').humanize.titleize
               block[:rec_math]           = (block.delete :recMath) || false
               block[:min_summoner_level] = -1
               block[:max_summoner_level] = -1
@@ -121,7 +121,7 @@ class HomeController < ApplicationController
           max_summoner_level: -1
         }
 
-        item_set_block = ItemSetBlock.new(starting_block)
+        item_set_block = ItemSetBlock.new(block)
         item_set_block.save
 
         items[index].each do |item|
