@@ -1,5 +1,9 @@
 class LoLA.Components.ItemSet
   constructor: ->
+    @build = new LoLA.Components.ItemSetBuild()
+    that = this
+
+    $('.item').on 'click', -> that.build.addItem($(this))
 
   load: (itemSet) ->
     $('.item-set .block').remove()

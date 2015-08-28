@@ -1,8 +1,8 @@
 class LoLA.Views.Home
   constructor: ->
-    that = this
     @champion = key: $('.champion.masthead').attr('data-key')
     @itemSet = new LoLA.Components.ItemSet()
+    that = this
 
     $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
 
