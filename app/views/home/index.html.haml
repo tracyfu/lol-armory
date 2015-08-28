@@ -3,11 +3,11 @@
     - @champions.each do |champion|
       %li
         %button.champion{ "data-id": champion.id }
-          = champion_image_tag(champion.images.first.full)
+          = champion_image_tag(champion.images.first, 'sprite')
           %span.name= champion.name
 
 %header.champion.masthead
-  = champion_image_tag(@default_champion.images.first.full)
+  = champion_image_tag(@default_champion.images.first)
 
   .details
     %h1.name= @default_champion.name

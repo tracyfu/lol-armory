@@ -1,5 +1,9 @@
 .home.index {
   section.champions {
+    height: 33.3vh;
+    margin: 30px auto;
+    overflow-y: scroll;
+
     ul {
       @include clearfix;
       margin: 0 -6px;
@@ -7,7 +11,7 @@
       li {
         float: left;
         margin-bottom: 12px;
-        padding: 0 6px;
+        padding: 0 12px;
         text-align: center;
         width: 10%;
       }

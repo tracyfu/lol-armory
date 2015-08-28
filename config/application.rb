@@ -8,6 +8,7 @@ module LolArmory
   class Application < Rails::Application
     config.cdn = 'http://ddragon.leagueoflegends.com/cdn'
     config.version = '5.16.1'
+    config.image_url = "#{config.cdn}/#{config.version}/img/"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
