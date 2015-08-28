@@ -7,3 +7,4 @@
 //= require lol-armory
 //= require_tree ./templates
 //= require_tree ./views
+//= require_tree ./components

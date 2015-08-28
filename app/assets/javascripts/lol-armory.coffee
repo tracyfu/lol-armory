@@ -5,4 +5,5 @@ window.LoLA =
     championImageURL: (image) -> this.cdn + '/' + this.version + '/img/champion/' + image
     itemImageURL: (image) -> this.cdn + '/' + this.version + '/img/item/' + image
   },
-  Views: {}
+  Views: {},
+  Components: {}

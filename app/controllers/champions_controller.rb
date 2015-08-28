@@ -6,7 +6,7 @@ class ChampionsController < ApplicationController
 
     @recommended_item_set['item_set_blocks'].each do |block|
       block['items'].each do |item|
-        item['description'] = ApplicationController.helpers.format_item_tooltip(item['description'])
+        item['description'] = ApplicationController.helpers.format_item_description(item['description'])
       end
     end
 

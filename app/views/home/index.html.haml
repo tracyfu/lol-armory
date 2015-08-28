@@ -30,7 +30,7 @@
               = item_image_tag(item.images.first, 'sprite')
               .name= item.name
               .cost #{item.cost.total}g
-              .description= format_item_tooltip(item.description)
+              .description= format_item_description(item.description)
 
   %section.builds.col-xs-4
     %h1 Builds

@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   # Replace invalid HTML tags
-  def format_item_tooltip(content)
+  def format_item_description(content)
     # Replace font tags
     content.gsub!(/<font color='#[a-fA-F0-9]{3,6}'>/, '<highlight>')
     content.gsub!(/<\/font>/, '</highlight>')
