@@ -25,5 +25,8 @@
         .item{ "data-id": item.id }
           = item_image_tag(item.images.first)
 
+          .item-tooltip
+            = format_tooltip(item.description)
+
 :coffee
   $ -> view = new LoLA.Views.Home()

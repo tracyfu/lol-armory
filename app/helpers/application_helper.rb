@@ -21,4 +21,14 @@ module ApplicationHelper
       image_tag "#{Rails.application.config.image_url}item/#{image.full}", class: 'image'
     end
   end
+
+  # Replace invalid HTML tags
+  def format_item_tooltip(content)
+    content.gsub!(/<font color='#[a-fA-F0-9]{3,6}'>/, '<highlight>')
+    content.gsub!(/<\/font>/, '</highlight>')
+    content.gsub!(/(<(?!br|i)([^\/][^>]+)>)/) { "<div class=\"#{($2).downcase}\">" }
+    content.gsub!(/<\/[^i][a-zA-Z]+>/, '</div>')
+
+    content.html_safe
+  end
 end
