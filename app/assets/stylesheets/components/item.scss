@@ -1,5 +1,7 @@
 section.item-set .block .item {
-  display: inline-block;
+  cursor: pointer;
+  float: left;
+  margin: 0 3px;
 
   .image {
     border-radius: 5px;

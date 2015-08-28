@@ -1,4 +1,5 @@
 section.item-set .block {
+  @include clearfix;
   border: 1px solid $lt-gray;
   margin: 15px 0;
   padding: 15px;
