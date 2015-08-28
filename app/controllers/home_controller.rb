@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @default_champion = @champions[rand(@champions.length)]
   end
 
+  # TODO: Move to Rake
   def import
     require 'lol'
 
@@ -44,6 +45,8 @@ class HomeController < ApplicationController
           image.save
         end
 
+        # Champion Recommended Items Documentation: https://developer.riotgames.com/api/methods#!/968/3326
+        # Item Set Documentation: https://developer.riotgames.com/docs/item-sets
         if c.key?(:recommended)
           recommended_set = (c[:recommended].select { |set| (set['map'] == 'SR' || set['map'] == '1') && set['mode'] == 'CLASSIC' }).first
 
@@ -52,6 +55,7 @@ class HomeController < ApplicationController
             recommended_set[:champion]   = champion
             recommended_set[:map]        = 'SR'
             recommended_set[:set_type]   = recommended_set.delete :type
+            recommended_set[:priority]   = recommended_set[:priority] || false
             recommended_set[:created_by] = 'Riot'
 
             item_set = ItemSet.new(recommended_set.except :blocks)
@@ -59,8 +63,11 @@ class HomeController < ApplicationController
 
             recommended_set[:blocks].each do |block|
               block.symbolize_keys!
-              block[:item_set]   = item_set
-              block[:block_type] = block.delete :type
+              block[:item_set]           = item_set
+              block[:block_type]         = (block.delete :type).gsub('jungle', ' jungle').humanize
+              block[:rec_math]           = (block.delete :recMath) || false
+              block[:min_summoner_level] = -1
+              block[:max_summoner_level] = -1
 
               item_set_block = ItemSetBlock.new(block.except :items)
               item_set_block.save
@@ -71,11 +78,62 @@ class HomeController < ApplicationController
                 item[:item_set_block] = item_set_block
                 item[:item]           = Item.find(item.delete :id)
 
-                item = ItemSetItem.new(item)
-                item.save
+                item_set_item = ItemSetItem.new(item)
+                item_set_item.save
               end
             end
           end
+        end
+      end
+    end
+
+    # Nidalee is the only champ without recommended items for Summoner's Rift - Classic Mode
+    # Builds a recommended item set from in-game data
+    nidalee = Champion.find_by(id: 76)
+
+    unless nidalee.nil?
+      recommended_set = {
+        champion:   nidalee,
+        map:        'SR',
+        mode:       'CLASSIC',
+        set_type:   'riot',
+        created_by: 'Riot',
+        title:      'NidaleeSR'
+      }
+
+      item_set = ItemSet.new(recommended_set)
+      item_set.save
+
+      items = [
+        [1056, 2003, 3340],            # Starting:    [1056: Doran's Ring, 2003: Health Potion, 3340: Warding Totem (Trinket)]
+        [3020, 3165, 3089],            # Essential:   [3020: Sorcerer's Shoes, 3165: Morellonomicon, 3089: Rabadon's Deathcap]
+        [3135, 3100, 3285],            # Offensive:   [3135: Void Staff, 3100: Lich Bane, 3285: Luden's Echo]
+        [3025, 3174, 3157],            # Defensive:   [3025: Iceborn Guantlet, 3174: Athene's Unholy Grail, 3157: Zhonya's Hourglass]
+        [2003, 2004, 2044, 2043, 2139] # Consumables: [2003: Health Potion, 2004: Mana Potion, 2044: Stealth Ward, 2043: Vision Ward, 2139: Elixir of Sorcery]
+      ]
+
+      ['Starting', 'Essential', 'Offensive', 'Defensive', 'Consumables'].each_with_index do |block, index|
+        block = {
+          item_set:           item_set,
+          block_type:         block,
+          rec_math:           false,
+          min_summoner_level: -1,
+          max_summoner_level: -1
+        }
+
+        item_set_block = ItemSetBlock.new(starting_block)
+        item_set_block.save
+
+        items[index].each do |item|
+          item = {
+            item_set:       item_set,
+            item_set_block: item_set_block,
+            item:           Item.find(item),
+            count:          1
+          }
+
+          item_set_item = ItemSetItem.new(item)
+          item_set_item.save
         end
       end
     end

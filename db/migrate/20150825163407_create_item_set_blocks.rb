@@ -6,7 +6,7 @@ class CreateItemSetBlocks < ActiveRecord::Migration
       t.string  :block_type
       t.string  :hide_if_summoner_spell
       t.string  :show_if_summoner_spell
-      t.boolean :recMath
+      t.boolean :rec_math
       t.integer :min_summoner_level
       t.integer :max_summoner_level
 

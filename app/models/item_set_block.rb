@@ -7,7 +7,7 @@
 #  block_type             :string(255)
 #  hide_if_summoner_spell :string(255)
 #  show_if_summoner_spell :string(255)
-#  recMath                :boolean
+#  rec_math               :boolean
 #  min_summoner_level     :integer
 #  max_summoner_level     :integer
 #  created_at             :datetime         not null

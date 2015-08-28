@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150826091947) do
     t.string   "block_type",             limit: 255
     t.string   "hide_if_summoner_spell", limit: 255
     t.string   "show_if_summoner_spell", limit: 255
-    t.boolean  "recMath"
+    t.boolean  "rec_math"
     t.integer  "min_summoner_level",     limit: 4
     t.integer  "max_summoner_level",     limit: 4
     t.datetime "created_at",                         null: false
