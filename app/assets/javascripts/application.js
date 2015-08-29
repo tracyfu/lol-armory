@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery_sortable
 //= require underscore
 //= require turbolinks
 //= require bootstrap-sprockets

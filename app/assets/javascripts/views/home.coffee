@@ -6,6 +6,7 @@ class LoLA.Views.Home
     that = this
 
     $('.item').each -> $(this).popover { html: true, content: $(this).find('.item-tooltip').html(), trigger: 'hover' }
+    $('.item').on 'mousedown', -> $(this).popover('hide')
 
     $('.champion').on 'click', -> that.loadChampion($(this).data('id'))
     $('.create-button').on 'click', => @itemSet.generate(@champion)

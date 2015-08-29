@@ -4,6 +4,9 @@ class LoLA.Components.ItemSet
     that = this
 
     $('.item').on 'click', -> that.build.addItem($(this))
+    $('.item-set .block').sortable
+      group: 'items'
+      pull:  false
 
   load: (itemSet) ->
     $('.item-set .block').remove()
