@@ -51,7 +51,7 @@ namespace :migrate do
     log.info "migrate:champions finished at #{end_time} and took #{end_time - start_time} seconds"
     log.close
 
-    # Rake::Task['champions:build_item_sets'].invoke
+    Rake::Task['champions:build_item_sets'].invoke
 
     # # Nidalee is the only champ without recommended items for Summoner's Rift - Classic Mode
     # # Builds a recommended item set from in-game data

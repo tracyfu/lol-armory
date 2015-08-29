@@ -16,7 +16,7 @@
 #
 
 class ItemSet < ActiveRecord::Base
-  has_many :item_set_blocks
-  has_many :item_set_items, through: :item_set_blocks
+  has_many :item_set_blocks, dependent: :destroy
+  has_many :item_set_items, through: :item_set_blocks, dependent: :destroy
   belongs_to :champion
 end
