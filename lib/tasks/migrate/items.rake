@@ -9,6 +9,7 @@ namespace :migrate do
     update_count = 0
     error_count  = 0
 
+    puts 'Migrating items...'
     log.info "migrate:items started at #{start_time}"
 
     require 'lol'
@@ -53,7 +54,9 @@ namespace :migrate do
     result = "#{new_count} new records, #{update_count} updated records, #{error_count} failures of #{items.length} total records"
 
     puts
+    puts
     puts result
+    puts
 
     log.info result
     log.info "migrate:items finished at #{end_time} and took #{end_time - start_time} seconds"

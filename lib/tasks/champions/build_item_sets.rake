@@ -9,6 +9,7 @@ namespace :champions do
     skipped_count  = 0
     skipped        = []
 
+    puts 'Building item sets...'
     log.info "champions:build_item_sets started at #{start_time}"
 
     require 'lol'
@@ -91,8 +92,86 @@ namespace :champions do
     result = "#{new_count} new records, #{skipped_count} records skipped of #{champions.length} total records"
 
     puts result
+    puts
     log.info result
     log.info "migrate:champions finished at #{end_time} and took #{end_time - start_time} seconds"
+    log.close
+
+    # Run if processing all champions or if the args.champions includes Nidalee
+    if !args.has_key?(:champions) || (args.has_key?(:champions) && args.champions.split.include?('76'))
+      Rake::Task['champions:build_item_set_for_nidalee'].invoke
+    end
+  end
+
+  # Nidalee is the only champ without recommended items for Summoner's Rift - Classic Mode
+  desc 'Build a recommended item set for Nidalee from in-game data'
+  task build_item_set_for_nidalee: :environment do
+    log = ActiveSupport::Logger.new('log/migrate.log')
+    start_time = Time.now
+
+    log.info "champions:build_item_set_for_nidalee started at #{start_time}"
+
+    nidalee = Champion.find_by(id: 76)
+
+    unless nidalee.nil?
+      recommended_set = {
+        champion:   nidalee,
+        map:        'SR',
+        mode:       'CLASSIC',
+        set_type:   'riot',
+        created_by: 'Riot',
+        title:      'NidaleeSR'
+      }
+
+      destroyed = ItemSet.where("champion_id = 76 and created_by = 'Riot'").destroy_all
+      ItemSetItem.where('item_set_id = ?', destroyed).delete_all
+
+      item_set = ItemSet.new(recommended_set)
+      item_set.save
+
+      puts 'Patching Nidalee...'
+
+      result = '1 new record of 1 total records'
+      puts result
+      puts
+      log.info result
+
+      items = [
+        [1056, 2003, 3340],            # Starting:    [1056: Doran's Ring, 2003: Health Potion, 3340: Warding Totem (Trinket)]
+        [3020, 3165, 3089],            # Essential:   [3020: Sorcerer's Shoes, 3165: Morellonomicon, 3089: Rabadon's Deathcap]
+        [3135, 3100, 3285],            # Offensive:   [3135: Void Staff, 3100: Lich Bane, 3285: Luden's Echo]
+        [3025, 3174, 3157],            # Defensive:   [3025: Iceborn Guantlet, 3174: Athene's Unholy Grail, 3157: Zhonya's Hourglass]
+        [2003, 2004, 2044, 2043, 2139] # Consumables: [2003: Health Potion, 2004: Mana Potion, 2044: Stealth Ward, 2043: Vision Ward, 2139: Elixir of Sorcery]
+      ]
+
+      ['Starting', 'Essential', 'Offensive', 'Defensive', 'Consumables'].each_with_index do |block, index|
+        block = {
+          item_set:           item_set,
+          block_type:         block,
+          rec_math:           false,
+          min_summoner_level: -1,
+          max_summoner_level: -1
+        }
+
+        item_set_block = ItemSetBlock.new(block)
+        item_set_block.save
+
+        items[index].each do |item|
+          item = {
+            item_set:       item_set,
+            item_set_block: item_set_block,
+            item:           Item.find(item),
+            count:          1
+          }
+
+          item_set_item = ItemSetItem.new(item)
+          item_set_item.save
+        end
+      end
+    end
+
+    end_time = Time.now
+    log.info "migrate:build_item_set_for_nidalee finished at #{end_time} and took #{end_time - start_time} seconds"
     log.close
   end
 end
