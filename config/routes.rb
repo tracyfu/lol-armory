@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :champions, only: :show
   resources :items, only: :index
 
-  get 'import', to: 'home#import'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
