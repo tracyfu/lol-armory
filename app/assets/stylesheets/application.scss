@@ -11,13 +11,12 @@
 
 body {
   @include font;
+  margin-right: 60px;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5 {
+h3 {
   font-weight: 400;
   margin: 0 0 15px;
 }
@@ -37,3 +36,4 @@ ul {
 // Components
 @import 'components/block';
 @import 'components/item';
+@import 'components/item-store';

@@ -1,14 +1,11 @@
 !!!
 %html
-  %head
-    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
-    %title LoL Armory
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+%head
+  %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
+  %title LoL Armory
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
 
-  %body{ class: page_class }
-    .container-fluid
-      .row.content
-        .col-md-8.col-md-offset-2
-          = yield
+%body{ class: page_class }
+  = yield

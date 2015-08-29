@@ -1,50 +1,54 @@
-%section.champions
-  %ul
-    - @champions.each do |champion|
-      %li
-        %button.champion{ "data-id": champion.id }
-          = champion_image_tag(champion.images.first, 'sprite')
-          %span.name= champion.name
+.content
+  .item-set-builder
+    %section.champions
+      %ul
+        - @champions.each do |champion|
+          %li
+            %button.champion{ "data-id": champion.id }
+              = champion_image_tag(champion.images.first, 'sprite')
+              %span.name= champion.name
 
-%header.champion.masthead{ "data-key": @default_champion.key }
-  = champion_image_tag(@default_champion.images.first)
+    %header.champion.masthead{ "data-key": @default_champion.key }
+      = champion_image_tag(@default_champion.images.first)
 
-  .details
-    %h1.name= @default_champion.name
-    %p.title= @default_champion.title
-    %p.roles= eval(@default_champion.tags).join(', ')
+      .details
+        %h1.name= @default_champion.name
+        %p.title= @default_champion.title
+        %p.roles= eval(@default_champion.tags).join(', ')
 
-.row
-  %section.item-set.col-xs-8
-    %h1 Recommended
+    .row
+      %section.item-set.col-xs-8
+        %h1 Recommended
 
-    - @default_champion.recommended_item_set.item_set_blocks.each do |block|
-      %section.block
-        %h1= block.block_type
+        - @default_champion.recommended_item_set.item_set_blocks.each do |block|
+          %section.block
+            %h1= block.block_type
 
-        - block.items.each do |item|
-          .item{ "data-id": item.id, "data-toggle": 'popover' }
-            = item_image_tag(item.images.first)
+            - block.items.each do |item|
+              .item{ "data-id": item.id, "data-toggle": 'popover' }
+                = item_image_tag(item.images.first)
 
-            .item-tooltip
-              = item_image_tag(item.images.first, 'sprite')
-              .name= item.name
-              .cost #{item.cost.total}g
-              .description= format_item_description(item.description)
+                .item-tooltip
+                  = item_image_tag(item.images.first, 'sprite')
+                  .name= item.name
+                  .cost #{item.cost.total}g
+                  .description= format_item_description(item.description)
 
-  %section.builds.col-xs-4
-    %h1 Builds
+      %section.builds.col-xs-4
+        %h1 Builds
 
-    %section.build
-      - (1..6).each do |i|
-        .item
+        %section.build
+          - (1..6).each do |i|
+            .item
 
-%section.json
-  %button.btn.btn-primary.create-button Create Item Set
+    %section.json
+      %button.btn.btn-primary.create-button Create Item Set
 
-  .path
+      .path
 
-  %pre.json-output
+      %pre.json-output
+
+  = render partial: 'item_store'
 
 :coffee
   $ -> view = new LoLA.Views.Home()

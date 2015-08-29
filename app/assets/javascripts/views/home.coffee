@@ -1,5 +1,6 @@
 class LoLA.Views.Home
   constructor: ->
+    @itemStore = new LoLA.Components.ItemStore()
     @champion = key: $('.champion.masthead').attr('data-key')
     @itemSet = new LoLA.Components.ItemSet()
     that = this
@@ -29,13 +30,3 @@ class LoLA.Views.Home
     $masthead.find('.name').html(@champion['name'])
     $masthead.find('.title').html(@champion['title'])
     $masthead.find('.roles').html(roles)
-
-
-
-
-
-
-
-
-
-

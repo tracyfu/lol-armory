@@ -1,0 +1,43 @@
+.item-store {
+  background: #fff;
+  bottom: 0;
+  box-shadow: 0 0 10px rgba(#000, .35);
+  overflow-y: scroll;
+  padding: 15px 0 15px 60px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translate(408px, 0);
+  transition: transform .5s ease-out;
+  width: 468px;
+
+  .store-open & {
+    transform: translate(0, 0);
+  }
+
+  .toggle {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    padding: 15px 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 60px;
+  }
+
+  .items {
+    @include clearfix;
+
+    .item {
+      float: left;
+      padding: 0 10px 15px;
+      text-align: center;
+      width: 68px;
+    }
+  }
+}
+
+body.open {
+  overflow: hidden;
+}

@@ -1,0 +1,8 @@
+%section.item-store
+  .toggle &laquo;
+
+  .items
+    - @items.each do |item|
+      .item
+        = item_image_tag(item.images.first, 'sprite')
+        = item.cost.total

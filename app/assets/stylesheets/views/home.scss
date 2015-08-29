@@ -1,4 +1,21 @@
 .home.index {
+  .content {
+    display: flex;
+
+    &.store-open .item-set-builder {
+      margin-right: 408px;
+    }
+
+    .item-set-builder {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      overflow: scroll;
+      transition: margin .5s ease-out;
+    }
+  }
+
   section.champions {
     margin: 30px auto;
 
