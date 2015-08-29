@@ -1,0 +1,10 @@
+.item{ 'data-id': item.id }
+  = item_image_tag(item.images.first, 'sprite')
+  .cost= item.cost.total
+
+  .item-tooltip
+    = item_image_tag(item.images.first, 'sprite')
+    .name= item.name
+    .cost #{item.cost.total}g
+    .description
+      = format_item_description(item.description)

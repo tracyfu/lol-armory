@@ -1,11 +1,21 @@
-section.item-set .block {
+.item-set .block {
   @include clearfix;
   border: 1px solid $lt-gray;
-  margin: 15px 0;
+  margin: 15px -5px;
   padding: 15px;
 
   h1 {
     border: 1px solid $lt-gray;
     padding: 6px;
+  }
+
+  .items {
+    @include clearfix;
+  }
+
+  .popover {
+    .description div {
+      display: inline-block;
+    }
   }
 }

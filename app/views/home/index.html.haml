@@ -1,15 +1,15 @@
 .content
   .content-wrapper
-    .item-set-builder
-      %section.champions
-        %ul
-          - @champions.each do |champion|
-            %li
-              %button.champion{ "data-id": champion.id }
-                = champion_image_tag(champion.images.first, 'sprite')
-                %span.name= champion.name
+    %section.champions
+      %ul
+        - @champions.each do |champion|
+          %li
+            %button.champion{ "data-id": champion.id }
+              = champion_image_tag(champion.images.first, 'sprite')
+              %span.name= champion.name
 
-      %header.champion.masthead{ "data-key": @default_champion.key }
+    %section.item-set-builder
+      %header.champion.masthead{ 'data-id': @default_champion.id, 'data-key': @default_champion.key }
         = champion_image_tag(@default_champion.images.first)
 
         .details
@@ -25,15 +25,9 @@
             %section.block
               %h1= block.block_type
 
-              - block.items.each do |item|
-                .item{ "data-id": item.id, "data-toggle": 'popover' }
-                  = item_image_tag(item.images.first)
-
-                  .item-tooltip
-                    = item_image_tag(item.images.first, 'sprite')
-                    .name= item.name
-                    .cost #{item.cost.total}g
-                    .description= format_item_description(item.description)
+              .items
+                - block.items.each do |item|
+                  = render partial: 'shared/item', locals: { item: item }
 
         %section.builds.col-xs-4
           %h1 Builds

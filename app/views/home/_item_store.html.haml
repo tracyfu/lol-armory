@@ -3,6 +3,4 @@
 
   .items
     - @items.each do |item|
-      .item
-        = item_image_tag(item.images.first, 'sprite')
-        = item.cost.total
+      = render partial: 'shared/item', locals: { item: item }

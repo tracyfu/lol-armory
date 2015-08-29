@@ -1,20 +1,19 @@
-section.item-set .block .item {
+.item {
   cursor: pointer;
   float: left;
-  margin: 0 3px;
+  margin: 0 5px;
 
   .image {
     border-radius: 5px;
-    width: 50px;
+  }
+
+  .cost {
+    font-size: em(11px);
+    padding: 3px 0;
+    text-align: center;
   }
 
   .item-tooltip {
     display: none;
-  }
-}
-
-section.item-set .block .popover {
-  .description div {
-    display: inline-block;
   }
 }
