@@ -1,7 +1,7 @@
 namespace :migrate do
   desc 'Migrate items from the LoL Static Data API'
   task items: :environment do
-    log = ActiveSupport::Logger.new('log/migrate_items.log')
+    log = ActiveSupport::Logger.new('log/migrate.log')
     $stdout.sync = true
 
     start_time   = Time.now
@@ -9,7 +9,7 @@ namespace :migrate do
     update_count = 0
     error_count  = 0
 
-    log.info "Task started at #{start_time}"
+    log.info "migrate:items started at #{start_time}"
 
     require 'lol'
 
@@ -50,13 +50,13 @@ namespace :migrate do
     end
 
     end_time = Time.now
-    result = "#{new_count} new records, #{update_count} updated records, #{error_count} failures of #{items.length} total records."
+    result = "#{new_count} new records, #{update_count} updated records, #{error_count} failures of #{items.length} total records"
 
     puts
     puts result
 
     log.info result
-    log.info "Task finished at #{end_time} and took #{end_time - start_time} seconds"
+    log.info "migrate:items finished at #{end_time} and took #{end_time - start_time} seconds"
     log.close
   end
 end
