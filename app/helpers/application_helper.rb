@@ -27,8 +27,6 @@ module ApplicationHelper
     # Replace font tags
     content.gsub!(/<font color='#[a-fA-F0-9]{3,6}'>/, '<highlight>')
     content.gsub!(/<\/font>/, '</highlight>')
-    # Add hotfix for Youmuu's Ghostblade (duplicate closing passive tags)
-    content.gsub!(/<\/passive>(.*)<\/passive>/, '</passive>\1')
     # Replace non-HTML tags
     content.gsub!(/(<(?!br|i)([^\/][^>]+)>)/) { "<div class=\"#{($2).downcase}\">" }
     content.gsub!(/<\/[^i][a-zA-Z]+>/, '</div>')

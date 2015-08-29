@@ -61,5 +61,7 @@ namespace :migrate do
     log.info result
     log.info "migrate:items finished at #{end_time} and took #{end_time - start_time} seconds"
     log.close
+
+    Rake::Task['items:fix_descriptions'].invoke
   end
 end
