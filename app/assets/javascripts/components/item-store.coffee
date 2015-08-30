@@ -31,14 +31,11 @@ class LoLA.Components.ItemStore
     if query == 'All'
       @$items.show()
     else
-      query = query.split(',')
+      query = query.toLowerCase().split(',')
 
       @$items.each ->
-        if $(this).attr('data-tags')
-          tags = $(this).attr('data-tags').split(',')
-          if _.intersection(query, tags).length > 0 then $(this).show() else $(this).hide()
-        else
-          $(this).hide()
+        tags = $(this).attr('class').split(' ')
+        if _.intersection(query, tags).length > 0 then $(this).show() else $(this).hide()
 
   # Filter items by search
   search: (query) ->

@@ -3,6 +3,10 @@
   float: left;
   margin: 0 5px;
 
+  &.active .image {
+    border: 2px solid #fc0;
+  }
+
   .image {
     border-radius: 5px;
     width: 48px;
