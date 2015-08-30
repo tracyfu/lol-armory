@@ -60,7 +60,7 @@ class LoLA.Components.ItemSet
       $.each block['items'], (index, item) ->
         data =
           id          : item['id']
-          classes     : $.parseJSON(item['tags']).join(' ').toLowerCase()
+          classes     : JSON.parse(item['tags']).join(' ').toLowerCase()
           name        : item['name']
           image       : LoLA.Config.spriteImageURL(item['images'][0]['sprite'])
           imageX      : if item['images'][0]['x'] == 0 then 0 else '-' + item['images'][0]['x'] + 'px'
