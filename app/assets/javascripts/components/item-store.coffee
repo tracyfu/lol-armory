@@ -22,9 +22,11 @@ class LoLA.Components.ItemStore
           show    : 150
 
     @$store.find('.toggle').on 'click', -> $('.content').toggleClass('store-open')
+    @$store.find('.search').on 'keyup', -> that.search($(this).val())
     @$items.on 'mousedown', -> $(this).popover('hide')
     @$store.find('.tags').on 'click', 'button', -> that.filter($(this).attr('data-tags'))
 
+  # Filter items by tags
   filter: (query) ->
     if query == 'All'
       @$items.show()
@@ -37,3 +39,14 @@ class LoLA.Components.ItemStore
           if _.intersection(query, tags).length > 0 then $(this).show() else $(this).hide()
         else
           $(this).hide()
+
+  # Filter items by search
+  search: (query) ->
+    console.log query
+    query = $.trim(query.toLowerCase())
+
+    @$items.each ->
+      if $(this).attr('data-name').toLowerCase().indexOf(query) > -1
+        $(this).show()
+      else
+        $(this).hide()

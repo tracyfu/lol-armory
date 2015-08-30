@@ -1,8 +1,12 @@
 %section.item-store
   .toggle &laquo;
 
-  = render partial: 'item_store_menu'
+  .search-wrapper
+    %input.search{ placeholder: 'Search' }
 
-  .items
-    - @items.each do |item|
-      = render partial: 'shared/item', locals: { item: item }
+  .store-wrapper
+    = render partial: 'item_store_menu'
+
+    .items
+      - @items.each do |item|
+        = render partial: 'shared/item', locals: { item: item }
