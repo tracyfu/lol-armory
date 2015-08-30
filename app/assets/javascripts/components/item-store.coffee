@@ -10,6 +10,7 @@ class LoLA.Components.ItemStore
         pull : 'clone'
         put  : false
       sort   : false
+      onRemove : -> that.$items = that.$store.find('.item')
 
     @$store.find('.item').each ->
       $(this).popover

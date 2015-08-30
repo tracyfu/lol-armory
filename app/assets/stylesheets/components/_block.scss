@@ -1,12 +1,11 @@
 .item-set .block {
   @include clearfix;
   border: 1px solid $lt-gray;
-  margin: 15px 0;
+  margin-bottom: 15px;
   padding: 15px;
 
-  h1 {
-    border: 1px solid $lt-gray;
-    padding: 6px;
+  input {
+    width: 100%;
   }
 
   .items {

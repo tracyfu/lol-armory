@@ -9,6 +9,7 @@
   top: 0;
   transform: translate(452px, 0);
   transition: transform .5s ease-out;
+  user-select: none;
   width: 512px;
 
   .store-open & {
@@ -32,7 +33,7 @@
     width: 452px;
 
     .search {
-      padding: 6px 12px;
+      user-select: text;
       width: 100%;
     }
   }
