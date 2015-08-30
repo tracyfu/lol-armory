@@ -1,13 +1,12 @@
 class LoLA.Components.ItemSet
   constructor: (@champion) ->
     @$itemSet = $('.item-set')
-    @$item    = @$itemSet.find('.item')
-    @build    = new LoLA.Components.ItemSetBuild()
-
     @initialize()
 
   initialize: ->
-    that = this
+    @$item = @$itemSet.find('.item')
+    @build = new LoLA.Components.ItemSetBuild()
+    that   = this
 
     @$itemSet.find('.items').sortable
       group  :
@@ -38,18 +37,22 @@ class LoLA.Components.ItemSet
     $.each itemSet['item_set_blocks'], (index, block) ->
       $itemSet = that.$itemSet
 
-      $itemSet.append('<section class="block"><h1>' + block['block_type'] + '</h1></section>')
+      $itemSet.append('<section class="block"><h1>' + block['block_type'] + '</h1><div class="items"></div></section>')
 
       $.each block['items'], (index, item) ->
         data =
           id          : item['id']
           name        : item['name']
-          image       : LoLA.Config.itemImageURL(item['images'][0]['full'])
+          image       : LoLA.Config.spriteImageURL(item['images'][0]['sprite'])
+          imageX      : if item['images'][0]['x'] == 0 then 0 else '-' + item['images'][0]['x'] + 'px'
+          imageY      : if item['images'][0]['y'] == 0 then 0 else '-' + item['images'][0]['y'] + 'px'
+          imageW      : item['images'][0]['w']
+          imageH      : item['images'][0]['h']
           cost        : item['cost']['total']
           description : item['description']
 
         item = JST['templates/item'](data)
-        $itemSet.find('section:eq(' + index + ')').append(item)
+        $itemSet.find('section:eq(' + index + ') .items').append(item)
 
     @initialize()
 
