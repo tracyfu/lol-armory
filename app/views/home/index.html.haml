@@ -19,13 +19,14 @@
 
       .row
         %section.item-set
-          %h1.title
-            %input{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
+          %h1
+            %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
 
           %article.blocks.col-xs-8
             - @default_champion.recommended_item_set.item_set_blocks.each do |block|
               %section.block
-                %h1.name= block.block_type
+                %h1
+                  %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
 
                 .items
                   - block.items.each do |item|

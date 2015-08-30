@@ -1,24 +1,26 @@
 class LoLA.Components.ItemSet
   constructor: (@champion) ->
-    @$itemSet = $('.item-set')
-    @defaults = title: 'Recommended'
-    that      = this
+    @$itemSet  = $('.item-set')
+    @$setTitle = @$itemSet.find('.set-title')
+    @defaults  = title: 'Recommended'
+    that       = this
 
-    @$itemSet.find('.title input')
+    @$setTitle
       .on 'focus', ->
         $(this).val('')
         that.$itemSet.trigger('lola.change')
 
       .on 'blur' , -> if $(this).val() == '' then $(this).val(that.defaults['title'])
 
-    @$itemSet.on 'lola.change', -> $('.json-output').html('')
+    @$itemSet.on 'lola.change', -> $('.path, .json-output').html('')
 
     @initialize()
 
   initialize: ->
-    @$item = @$itemSet.find('.item')
-    @build = new LoLA.Components.ItemSetBuild()
-    that   = this
+    @$block = @$itemSet.find('.block')
+    @$item  = @$itemSet.find('.item')
+    @build  = new LoLA.Components.ItemSetBuild()
+    that    = this
 
     @$itemSet.find('.items').sortable
       group  :
@@ -35,7 +37,10 @@ class LoLA.Components.ItemSet
         container : 'body'
         trigger   : 'hover'
 
-    $('.json-output').html('')
+    @$block.each ->
+      new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
+
+    $('.path, .json-output').html('')
 
     @$item.on 'mousedown', -> $(this).popover('hide')
     @$item.on 'click', -> that.build.addItem($(this))
@@ -44,13 +49,14 @@ class LoLA.Components.ItemSet
   load: (itemSet) ->
     that = this
 
-    @$itemSet.find('.title input').val(@defaults['title'])
+    @$setTitle.val(@defaults['title'])
     @$itemSet.find('.block').remove()
 
     $.each itemSet['item_set_blocks'], (index, block) ->
       $itemSet = that.$itemSet
 
-      $itemSet.find('.blocks').append('<section class="block"><h1 class="name">' + block['block_type'] + '</h1><div class="items"></div></section>')
+      $block = $(JST['templates/block'](title: block['block_type'], placeholder: 'Block Title'))
+      $itemSet.find('.blocks').append($block)
 
       $.each block['items'], (index, item) ->
         data =
@@ -64,18 +70,18 @@ class LoLA.Components.ItemSet
           cost        : item['cost']['total']
           description : item['description']
 
-        item = JST['templates/item'](data)
-        $itemSet.find('section:eq(' + index + ') .items').append(item)
+        $item = $(JST['templates/item'](data))
+        $itemSet.find('section:eq(' + index + ') .items').append($item)
 
     @initialize()
 
   generate: (champion) ->
     path = 'C:\\Riot Games\\League of Legends\\Config\\Champions\\<span class="champion">' + champion['key'] + '</span>\\Recommended\\'
-    file = '<span class="file">LoLA_ItemSet_' + (new Date()).toISOString().slice(0, 10).replace(/-/g,"") + '.json</file>'
+    file = '<span class="file">LoLA_ItemSet_' + champion['key'] + '_' + (new Date()).toISOString().slice(0, 10).replace(/-/g,"") + '.json</file>'
 
     $('.path').html(path + file)
 
-    title = $('<div>').text(@$itemSet.find('.title input').val()).html()
+    title = $('<div>').text(@$setTitle.val()).html()
 
     itemSet =
       title    : title
@@ -87,8 +93,10 @@ class LoLA.Components.ItemSet
       blocks   : []
 
     @$itemSet.find('.block').each ->
+      title = $('<div>').text($(this).find('.block-title').val()).html()
+
       block =
-        type                : $(this).find('h1').text()
+        type                : title
         recMath             : false
         minSummonerLevel    : -1
         maxSummonerLevel    : -1
