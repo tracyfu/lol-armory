@@ -63,3 +63,9 @@ h1 {
 @import 'components/block';
 @import 'components/item';
 @import 'components/item-store';
+
+.popover {
+  .description div {
+    display: inline-block;
+  }
+}
