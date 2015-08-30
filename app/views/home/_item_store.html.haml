@@ -5,8 +5,8 @@
     %input.search{ placeholder: 'Search' }
 
   .store-wrapper
-    = render partial: 'home/item_store/menu'
+    = render partial: 'item_store_menu'
 
     .items
       - @items.each do |item|
-        = render partial: 'home/item_store/item', locals: { item: item }
+        = render partial: 'shared/item', locals: { item: item }

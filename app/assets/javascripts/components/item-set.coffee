@@ -33,7 +33,7 @@ class LoLA.Components.ItemSet
     @$item.each ->
       $(this).popover
         html      : true
-        content   : $('.item-store .item[data-id="' + $(this).attr('data-id') + '"]').find('.item-tooltip').html()
+        content   : $(this).find('.item-tooltip').html()
         container : 'body'
         trigger   : 'hover'
 
@@ -69,6 +69,7 @@ class LoLA.Components.ItemSet
           imageW      : item['images'][0]['w']
           imageH      : item['images'][0]['h']
           cost        : item['cost']['total']
+          description : item['description']
 
         $item = $(JST['templates/item'](data))
         $itemSet.find('section:eq(' + index + ') .items').append($item)

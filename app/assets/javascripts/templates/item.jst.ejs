@@ -1,4 +1,11 @@
 <div class="item <%= classes %>" data-id="<%= id %>" data-name="<%= name %>">
   <div class="image" style="background: url('<%= image %>') <%= imageX %> <%= imageY %>; width: <%= imageW %>px; height: <%= imageH %>px;"></div>
   <div class="cost"><%= cost %></div>
+
+  <div class="item-tooltip">
+    <div class="image" style="background: url('<%= image %>') <%= imageX %> <%= imageY %>; width: <%= imageW %>px; height: <%= imageH %>px;"></div>
+    <div class="name"><%= name %></div>
+    <div class="cost"><%= cost %>g</div>
+    <div class="description"><%= description %></div>
+  </div>
 </div>
