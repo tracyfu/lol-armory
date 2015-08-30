@@ -51,13 +51,13 @@ class LoLA.Components.ItemSet
     @$setTitle.val(@defaults['title'])
     @$itemSet.find('.block').remove()
 
-    $.each itemSet['item_set_blocks'], (index, block) ->
+    $.each itemSet['item_set_blocks'], (bi, block) ->
       $itemSet = that.$itemSet
 
       $block = $(JST['templates/block'](title: block['block_type'], placeholder: 'Block Title'))
       $itemSet.find('.blocks').append($block)
 
-      $.each block['items'], (index, item) ->
+      $.each block['items'], (ii, item) ->
         data =
           id          : item['id']
           classes     : JSON.parse(item['tags']).join(' ').toLowerCase()
@@ -71,7 +71,7 @@ class LoLA.Components.ItemSet
           description : item['description']
 
         $item = $(JST['templates/item'](data))
-        $itemSet.find('section:eq(' + index + ') .items').append($item)
+        $itemSet.find('section:eq(' + bi + ') .items').append($item)
 
     @initialize()
 
