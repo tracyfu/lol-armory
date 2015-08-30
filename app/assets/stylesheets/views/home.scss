@@ -68,7 +68,19 @@
     }
   }
 
-  section.builds {
+  .item-set {
+    .title {
+      margin: 30px 0;
+      padding: 0 15px;
+
+      input {
+        padding: 6px 12px;
+        width: 100%;
+      }
+    }
+  }
+
+  article.builds {
     .build {
       @include clearfix;
 

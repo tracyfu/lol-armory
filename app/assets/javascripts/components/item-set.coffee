@@ -3,6 +3,8 @@ class LoLA.Components.ItemSet
     @$itemSet = $('.item-set')
     @initialize()
 
+    @$itemSet.find('.title input').on 'focus', -> $(this).val('')
+
   initialize: ->
     @$item = @$itemSet.find('.item')
     @build = new LoLA.Components.ItemSetBuild()
@@ -32,12 +34,13 @@ class LoLA.Components.ItemSet
   load: (itemSet) ->
     that = this
 
-    $('.item-set .block').remove()
+    @$itemSet.find('.title input').val('Recommended')
+    @$itemSet.find('.block').remove()
 
     $.each itemSet['item_set_blocks'], (index, block) ->
       $itemSet = that.$itemSet
 
-      $itemSet.append('<section class="block"><h1>' + block['block_type'] + '</h1><div class="items"></div></section>')
+      $itemSet.find('.blocks').append('<section class="block"><h1 class="name">' + block['block_type'] + '</h1><div class="items"></div></section>')
 
       $.each block['items'], (index, item) ->
         data =
@@ -62,8 +65,10 @@ class LoLA.Components.ItemSet
 
     $('.path').html(path + file)
 
+    title = $('<div>').text(@$itemSet.find('.title input').val()).html()
+
     itemSet =
-      title    : $('.item-set > h1').text()
+      title    : title
       type     : 'custom'
       map      : 'any'
       mode     : 'any'
@@ -71,7 +76,7 @@ class LoLA.Components.ItemSet
       sortrank : 0
       blocks   : []
 
-    $('.item-set .block').each ->
+    @$itemSet.find('.block').each ->
       block =
         type                : $(this).find('h1').text()
         recMath             : false
