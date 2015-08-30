@@ -1,5 +1,9 @@
 .content.store-open
   .content-wrapper
+    %header.site-header
+      %h1 LoL Armory
+      .patch= Rails.application.config.version
+
     %section.champions
       %ul
         - @champions.each do |champion|
@@ -43,6 +47,14 @@
         %button.btn.btn-primary.create-button Create Item Set
         .path
         %pre.json-output
+
+    %footer
+      .legal LoL Armory isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends &copy; Riot Games, Inc.
+
+      .links
+        .copyright &copy; 2015 LoLArmory.net
+        = link_to 'GitHub', 'https://github.com/tracyfu/lol-armory', class: 'github link'
+        = mail_to 'nummycakes@gmail.com', 'Contact', class: 'contact link'
 
   = render partial: 'store'
 

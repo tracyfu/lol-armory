@@ -12,11 +12,27 @@
       flex-direction: column;
       margin: 0;
       overflow-y: scroll;
+      padding: 30px;
       transition: margin .5s ease-out;
     }
 
-    .item-set-builder {
-      padding: 30px;
+    .site-header h1 {
+      margin-bottom: 0;
+    }
+
+    footer {
+      font-size: em(11px);
+
+      .links {
+        margin-top: 15px;
+        text-align: center;
+
+        .copyright,
+        .link {
+          display: inline-block;
+          padding: 0 6px;
+        }
+      }
     }
   }
 
