@@ -14,6 +14,37 @@ body {
   margin-right: 60px;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+// Typography
+@font-face {
+  font-family: 'Beaufort';
+  font-weight: 400;
+  src: asset-url('Beaufort-Regular.woff2') format('woff2'),
+       asset-url('Beaufort-Regular.woff')  format('woff'),
+       asset-url('Beaufort-Regular.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  font-weight: 400;
+  font-style: italic;
+  src: asset-url('Beaufort-Italic.woff2') format('woff2'),
+       asset-url('Beaufort-Italic.woff')  format('woff'),
+       asset-url('Beaufort-Italic.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'Beaufort';
+  font-weight: 700;
+  src: asset-url('Beaufort-Bold.woff2') format('woff2'),
+       asset-url('Beaufort-Bold.woff')  format('woff'),
+       asset-url('Beaufort-Bold.ttf')   format('truetype');
+}
+
 h1,
 h2,
 h3 {
@@ -23,11 +54,6 @@ h3 {
 
 h1 {
   font-size: em(21px);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
 }
 
 // Views

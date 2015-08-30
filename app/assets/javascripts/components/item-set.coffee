@@ -1,9 +1,19 @@
 class LoLA.Components.ItemSet
   constructor: (@champion) ->
     @$itemSet = $('.item-set')
-    @initialize()
+    @defaults = title: 'Recommended'
+    that      = this
 
-    @$itemSet.find('.title input').on 'focus', -> $(this).val('')
+    @$itemSet.find('.title input')
+      .on 'focus', ->
+        $(this).val('')
+        that.$itemSet.trigger('lola.change')
+
+      .on 'blur' , -> if $(this).val() == '' then $(this).val(that.defaults['title'])
+
+    @$itemSet.on 'lola.change', -> $('.json-output').html('')
+
+    @initialize()
 
   initialize: ->
     @$item = @$itemSet.find('.item')
@@ -34,7 +44,7 @@ class LoLA.Components.ItemSet
   load: (itemSet) ->
     that = this
 
-    @$itemSet.find('.title input').val('Recommended')
+    @$itemSet.find('.title input').val(@defaults['title'])
     @$itemSet.find('.block').remove()
 
     $.each itemSet['item_set_blocks'], (index, block) ->

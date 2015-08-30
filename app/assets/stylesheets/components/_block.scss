@@ -1,7 +1,7 @@
 .item-set .block {
   @include clearfix;
   border: 1px solid $lt-gray;
-  margin: 15px -5px;
+  margin: 15px 0;
   padding: 15px;
 
   h1 {
@@ -11,6 +11,8 @@
 
   .items {
     @include clearfix;
+    background: $xl-gray;
+    padding: 10px 5px 5px;
   }
 
   .popover {
