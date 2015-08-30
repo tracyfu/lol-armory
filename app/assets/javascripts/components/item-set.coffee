@@ -27,8 +27,7 @@ class LoLA.Components.ItemSet
         name : 'item-set'
         pull : 'clone'
         put  : ['items']
-      onAdd  : (e) ->
-        $(e.item).data('bs.popover').options.placement = 'right'
+      onAdd  : (e) -> $(e.item).data('bs.popover').options.placement = 'right'
 
     @$item.each ->
       $(this).popover

@@ -45,7 +45,7 @@
   .tags {
     height: 90vh;
     overflow-y: auto;
-    width: 200px;
+    width: 170px;
 
     .group {
       > button {
@@ -71,10 +71,32 @@
     height: 90vh;
     overflow-y: auto;
     padding: 10px;
-    width: 252px;
-  }
-}
+    width: 282px;
 
-body.open {
-  overflow: hidden;
+    .item {
+      @include clearfix;
+      background: #fff;
+      float: none;
+      margin-bottom: 5px;
+      padding: 5px;
+
+      .image,
+      .info {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .name,
+      .cost {
+        margin: 0 5px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .name {
+        @include clearfix;
+        font-size: em(13px);
+      }
+    }
+  }
 }

@@ -28,6 +28,8 @@ class LoLA.Components.ItemStore
 
   # Filter items by tags
   filter: (query) ->
+    @$store.find('.search').val('')
+
     if query == 'All'
       @$items.show()
     else

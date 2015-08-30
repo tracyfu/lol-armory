@@ -5,7 +5,7 @@
   <div class="item-tooltip">
     <div class="image" style="background: url('<%= image %>') <%= imageX %> <%= imageY %>; width: <%= imageW %>px; height: <%= imageH %>px;"></div>
     <div class="name"><%= name %></div>
-    <div class="cost"><%= cost %>g</div>
+    <div class="cost"><%= cost == 0 ? 'Free' : cost %></div>
     <div class="description"><%= description %></div>
   </div>
 </div>

@@ -3,7 +3,10 @@
        'data-name': item.name }
 
   = item_image_tag(item.images.first, 'sprite')
-  .cost= item.cost.total
+
+  .info
+    .name= item.name
+    .cost= item.cost.total == 0 ? 'Free' : item.cost.total
 
   .item-tooltip
     = item_image_tag(item.images.first, 'sprite')
