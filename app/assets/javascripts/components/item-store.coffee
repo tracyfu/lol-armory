@@ -24,11 +24,15 @@ class LoLA.Components.ItemStore
     @$store.find('.toggle').on 'click', -> $('.content').toggleClass('store-open')
     @$store.find('.search').on 'keyup', -> that.search($(this).val())
     @$items.on 'mousedown', -> $(this).popover('hide')
-    @$store.find('.tags').on 'click', 'button', -> that.filter($(this).attr('data-tags'))
+    @$store.find('.tags').on 'click', 'button', -> that.filter($(this))
 
   # Filter items by tags
-  filter: (query) ->
+  filter: ($filter) ->
     @$store.find('.search').val('')
+    @$store.find('.tags button').removeClass('active')
+    $filter.addClass('active')
+
+    query = $filter.attr('data-tags')
 
     if query == 'All'
       @$items.show()

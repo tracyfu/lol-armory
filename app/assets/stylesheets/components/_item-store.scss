@@ -62,7 +62,12 @@
       background: none;
       padding: 0;
       text-align: left;
+      transition: color .15s;
       width: 100%;
+
+      &.active {
+        color: #f90;
+      }
     }
   }
 
