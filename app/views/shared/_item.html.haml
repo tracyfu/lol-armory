@@ -1,4 +1,4 @@
-.item{ 'data-id': item.id }
+.item{ 'data-id': item.id, 'data-tags': (eval(item.tags).join(',') unless item.tags.nil?) }
   = item_image_tag(item.images.first, 'sprite')
   .cost= item.cost.total
 
