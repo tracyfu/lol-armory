@@ -39,19 +39,35 @@
   section.champions {
     margin: 30px auto;
 
+    header {
+      align-items: baseline;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .search-wrapper {
+      flex-grow: 1;
+      padding-left: 15px;
+    }
+
     ul {
       @include clearfix;
-      height: 33.3vh;
+      height: 0;
       margin: 30px -6px 0;
       overflow-y: scroll;
+      transition: height .25s ease-out;
       width: 100%;
+
+      &.active {
+        height: 33.3vh;
+      }
 
       li {
         float: left;
         height: 0;
         opacity: 0;
         text-align: center;
-        transition: opacity .15s, width 0 .15s, height 0 .15s;
+        transition: opacity .15s, width 0s .15s, height 0s .15s;
         width: 0;
 
         &.active {
