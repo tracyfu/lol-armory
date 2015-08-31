@@ -112,6 +112,16 @@
     }
   }
 
+  .builds {
+    top: 0;
+    transition: top .15s;
+
+    &.sticky {
+      position: absolute;
+      top: 30px;
+    }
+  }
+
   .item-set {
     > h1 {
       margin: 30px 0;

@@ -29,6 +29,12 @@
         %h1
           %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
 
+        %article.builds.col-xs-4
+          %h1 Sample Build
+          %p Drag items from your item set to inspect your final build.
+
+          %section.build
+
         %article.blocks.col-xs-8
           - @default_champion.recommended_item_set.item_set_blocks.each do |block|
             %section.block
@@ -38,12 +44,6 @@
               .items
                 - block.items.each do |item|
                   = render partial: 'shared/item', locals: { item: item }
-
-        %article.builds.col-xs-4
-          %h1 Sample Build
-          %p Drag items from your item set to inspect your final build.
-
-          %section.build
 
       %section.json
         %button.btn.btn-primary.create-button Create Item Set
