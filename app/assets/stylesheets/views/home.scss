@@ -16,7 +16,7 @@
     }
 
     .site-header {
-      color: #fff;
+      margin: 30px 30px 15px;
 
       h1 {
         margin-bottom: 0;
@@ -29,8 +29,9 @@
     }
 
     footer {
-      color: $md-gray;
+      color: $dk-gold;
       font-size: em(11px);
+      margin: 30px;
 
       .links {
         margin-top: 15px;
@@ -46,25 +47,44 @@
   }
 
   .champions {
-    margin: 30px auto;
     width: 100%;
 
     header {
       align-items: baseline;
+      cursor: pointer;
       display: flex;
       flex-direction: row;
-    }
+      padding: 15px 30px 30px 15px;
 
-    .search-wrapper {
-      flex-grow: 1;
-      padding-left: 15px;
+      h1 {
+        color: lighten($dk-teal, 15%);
+        font-family: $spiegel;
+        font-size: em(15px);
+        margin: 0;
+        padding: 6px 12px;
+        transition: color .15s;
+
+        &:hover {
+          color: lighten($dk-teal, 20%);
+        }
+
+        .caret {
+          margin-right: 2px;
+        }
+      }
+
+      .search-wrapper {
+        flex-grow: 1;
+        padding-left: 15px;
+      }
     }
 
     ul {
       @include clearfix;
       height: 0;
-      margin: 30px -6px 0;
+      margin: 0;
       overflow-y: scroll;
+      padding: 0 15px;
       transition: height .25s ease-out;
       width: 100%;
 
@@ -97,6 +117,7 @@
       padding: 0 12px 12px;
 
       .image {
+        border: 1px solid #a8814a;
         border-radius: 100%;
         width: 100%;
       }
@@ -108,12 +129,11 @@
     }
   }
 
-  // Masthead
   .champion.masthead {
     @include clearfix;
-    background: linear-gradient(to left, rgba(#0c2830, 0), rgba(#0c2830, .75));
-    border-bottom: 1px solid lighten(#0c2830, 5%);
-    border-top: 1px solid lighten(#0c2830, 5%);
+    background: linear-gradient(to left, rgba($dk-teal, 0), rgba($dk-teal, .75));
+    border-bottom: 1px solid lighten($dk-teal, 5%);
+    border-top: 1px solid lighten($dk-teal, 5%);
     box-shadow: 0 0 3px rgba(#000, .35);
     padding: 15px;
 
@@ -134,10 +154,10 @@
     .details {
       float: left;
       margin: 0 18px;
-      text-shadow: 0 0 2px rgba(#0c2830, .75);
+      text-shadow: 0 0 2px rgba($dk-teal, .75);
 
       .name {
-        color: mix(#cab5a2, #ffe09d);
+        color: $lt-tan;
         font-size: em(35px);
         margin-bottom: 0;
         text-transform: uppercase;
@@ -149,6 +169,7 @@
 
       .roles {
         font-family: $spiegel;
+        font-style: italic;
       }
     }
   }
@@ -162,14 +183,22 @@
       top: 30px;
     }
 
+    h2 {
+      font-size: em(17px);
+      margin: 1em 0;
+    }
+
     .stats .list .gains {
-      border-top: 1px solid $lt-gray;
+      border-top: 1px solid $dk-gold;
       font-size: em(11px);
       padding: 10px 0;
     }
   }
 
   .item-set {
+    margin: 0;
+    padding: 15px;
+
     > h1 {
       margin: 30px 0;
       padding: 0 15px;
@@ -185,7 +214,19 @@
     }
   }
 
-  section.json {
+  .json {
+    padding: 0 30px;
+
+    .create-button {
+      background: linear-gradient(to top, #825c28, $dk-gold);
+      border: 1px solid $dk-gold;
+      color: mix(#cab5a2, #ffe09d);
+      font-family: $spiegel;
+      font-size: em(15px);
+      margin: 0;
+      padding: 6px 12px;
+    }
+
     .path {
       margin: 15px 0;
 

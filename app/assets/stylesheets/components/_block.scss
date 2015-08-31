@@ -1,12 +1,12 @@
-.item-set .block {
+  .item-set .block {
   @include clearfix;
-  border: 1px solid $lt-gray;
+  border: 1px solid $dk-gold;
   margin-bottom: 15px;
   padding: 15px;
 
   .items {
     @include clearfix;
-    background: $xl-gray;
+    background: #222;
     padding: 10px 5px 5px;
   }
 }

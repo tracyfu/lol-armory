@@ -2,13 +2,14 @@
   cursor: pointer;
   float: left;
   margin: 0 5px;
+  position: relative;
 
   &.active > .image {
-    border: 2px solid #fc0;
+    border: 2px solid lighten($dk-gold, 10%);
   }
 
   .image {
-    border-radius: 5px;
+    border: 1px solid lighten($dk-teal, 10%);
     width: 48px;
   }
 
@@ -20,5 +21,20 @@
 
   .item-tooltip {
     display: none;
+  }
+
+  .remove-button {
+    background: linear-gradient(to bottom, #222, #000);
+    border: 1px solid $dk-gold;
+    border-radius: 100%;
+    color: $dk-gold;
+    height: 20px;
+    line-height: 0;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: -6px;
+    right: -6px;
+    width: 20px;
   }
 }

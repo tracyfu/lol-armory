@@ -8,7 +8,9 @@
 
     %section.champions
       %header
-        %h1 Choose a Champion
+        %h1
+          %span.caret
+          Choose a Champion
         = render partial: 'shared/search'
 
       %ul
@@ -53,7 +55,7 @@
                   = render partial: 'shared/item', locals: { item: item }
 
       %section.json
-        %button.btn.btn-primary.create-button Create Item Set
+        %button.create-button Create Item Set
         .path
         %pre.json-output
 
