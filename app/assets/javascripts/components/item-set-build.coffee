@@ -17,11 +17,14 @@ class LoLA.Components.ItemSetBuild
 
       .on 'lola.remove', => @updateSortable()
 
-    $('.item-set .item').on 'lola.remove', => @resolve()
+    $('.item-set .item').on 'lola.remove', -> that.resolve($(this))
 
   updateSortable: ->
     if @$build.find('.item').length < 6
       @$build.data('sortable').option('disabled', false)
 
   # Remove item from build if removed from item set
-  resolve: ->
+  resolve: ($item) ->
+    @$build.find('.item[data-id="' + $item.attr('data-id') + '"]').remove()
+    @updateSortable()
+
