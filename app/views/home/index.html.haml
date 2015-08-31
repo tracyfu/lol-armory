@@ -11,6 +11,7 @@
         %h1
           %span.caret
           Choose a Champion
+
         = render partial: 'shared/search'
 
       %ul
@@ -29,6 +30,8 @@
           %h1.name= @default_champion.name
           %p.title= @default_champion.title
           %p.roles= eval(@default_champion.tags).join(', ')
+
+        %button.create-button{ 'data-toggle': 'modal', 'data-target': '.json.modal' } Create Item Set
 
       %section.item-set.row
         %h1
@@ -54,11 +57,6 @@
                 - block.items.each do |item|
                   = render partial: 'shared/item', locals: { item: item }
 
-      %section.json
-        %button.create-button Create Item Set
-        .path
-        %pre.json-output
-
     %footer
       .legal LoL Armory isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends &copy; Riot Games, Inc.
 
@@ -71,6 +69,8 @@
         = link_to 'Riot Hire Me!', 'https://www.linkedin.com/in/tracyrfu', class: 'linkedin link'
 
   = render partial: 'store'
+
+= render partial: 'json_modal'
 
 :coffee
   $ -> view = new LoLA.Views.Home()

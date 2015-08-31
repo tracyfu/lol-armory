@@ -130,17 +130,16 @@
   }
 
   .champion.masthead {
-    @include clearfix;
     background: linear-gradient(to left, rgba($dk-teal, 0), rgba($dk-teal, .75));
     border-bottom: 1px solid lighten($dk-teal, 5%);
     border-top: 1px solid lighten($dk-teal, 5%);
     box-shadow: 0 0 3px rgba(#000, .35);
+    display: flex;
     padding: 15px;
 
     .image-border {
       background: linear-gradient(to bottom, #ffe09d, #825c28);
       border: 1px solid #000;
-      float: left;
       padding: 3px;
 
       .image {
@@ -152,7 +151,7 @@
     }
 
     .details {
-      float: left;
+      flex-grow: 1;
       margin: 0 18px;
       text-shadow: 0 0 2px rgba($dk-teal, .75);
 
@@ -171,6 +170,17 @@
         font-family: $spiegel;
         font-style: italic;
       }
+    }
+
+    .create-button {
+      align-self: flex-end;
+      background: linear-gradient(to bottom, $xd-gray, #131313);
+      border: 1px solid $dk-gold;
+      color: mix(#cab5a2, #ffe09d);
+      font-size: em(15px);
+      margin: 0;
+      padding: 6px 12px;
+      white-space: nowrap;
     }
   }
 
@@ -216,16 +226,6 @@
 
   .json {
     padding: 0 30px;
-
-    .create-button {
-      background: linear-gradient(to top, #825c28, $dk-gold);
-      border: 1px solid $dk-gold;
-      color: mix(#cab5a2, #ffe09d);
-      font-family: $spiegel;
-      font-size: em(15px);
-      margin: 0;
-      padding: 6px 12px;
-    }
 
     .path {
       margin: 15px 0;

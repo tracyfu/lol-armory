@@ -6,8 +6,9 @@ class LoLA.Views.Home
     @itemSet   = new LoLA.Components.ItemSet(@champion)
     that       = this
 
-    $('.champions').on 'click', -> $(this).find('ul').toggleClass('active')
-    $('.champion').on 'click', -> that.loadChampion($(this).data('id'))
+    $('.champions')
+      .on 'click', -> $(this).find('ul').toggleClass('active')
+      .on 'click', '.champion', -> that.loadChampion($(this).data('id'))
 
   loadChampion: (id) ->
     $.ajax 'champions/' + id
