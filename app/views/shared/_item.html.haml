@@ -8,6 +8,9 @@
     .name= item.name
     .cost= item.cost.total == 0 ? 'Free' : item.cost.total
 
+  .actions
+    %button.remove-button &times;
+
   .item-tooltip
     = item_image_tag(item.images.first, 'sprite')
     = recipe_tree(item) unless item.from.nil?
