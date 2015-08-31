@@ -5,11 +5,11 @@ class LoLA.Components.ItemStore
     that    = this
 
     @$store.find('.items').sortable
-      group  :
-        name : 'items'
-        pull : 'clone'
-        put  : false
-      sort   : false
+      group    :
+        name   : 'items'
+        pull   : 'clone'
+        put    : false
+      sort     : false
       onRemove : -> that.$items = that.$store.find('.item')
 
     @$store.find('.item').each ->

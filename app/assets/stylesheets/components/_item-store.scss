@@ -3,7 +3,7 @@
   border-left: 1px solid lighten($dk-teal, 5%);
   bottom: 0;
   box-shadow: 0 0 10px rgba(#000, .35);
-  overflow-y: scroll;
+  overflow: hidden;
   padding-left: 60px;
   position: fixed;
   right: 0;
