@@ -3,13 +3,13 @@
     display: flex;
 
     &.store-open .content-wrapper {
-      display: flex;
-      height: 100vh;
       margin-right: 452px;
     }
 
     .content-wrapper {
+      display: flex;
       flex-direction: column;
+      height: 100vh;
       margin: 0;
       overflow-y: scroll;
       padding: 30px;

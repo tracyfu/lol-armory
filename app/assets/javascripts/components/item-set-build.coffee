@@ -46,6 +46,8 @@ class LoLA.Components.ItemSetBuild
 
     $('.builds').css('width', ($('.item-set').width() / 3) + 'px')
 
+    console.log offsetTop + '/' + upperBound
+
     if offsetTop < upperBound && offsetBottom < lowerBound
       $('.builds').addClass('sticky')
       $('.blocks').addClass('col-xs-offset-4')
