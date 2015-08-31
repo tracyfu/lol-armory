@@ -67,6 +67,7 @@ class LoLA.Components.ItemSet
           imageY      : if item['images'][0]['y'] == 0 then 0 else '-' + item['images'][0]['y'] + 'px'
           imageW      : item['images'][0]['w']
           imageH      : item['images'][0]['h']
+          recipe      : item['recipe']
           cost        : item['cost']['total']
           description : item['description']
 

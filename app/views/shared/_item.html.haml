@@ -13,7 +13,6 @@
     = recipe_tree(item) unless item.from.nil?
     .name= item.name
     .cost #{item.cost.total}g
-    .description
-      = format_item_description(item.description)
+    .description= format_item_description(item.description)
 
 

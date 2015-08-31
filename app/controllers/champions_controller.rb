@@ -7,6 +7,7 @@ class ChampionsController < ApplicationController
     @recommended_item_set['item_set_blocks'].each do |block|
       block['items'].each do |item|
         item['description'] = ApplicationController.helpers.format_item_description(item['description'])
+        item['recipe'] = ApplicationController.helpers.recipe_tree(Item.find(item['id']))
       end
     end
 
