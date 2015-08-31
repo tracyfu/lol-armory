@@ -120,6 +120,12 @@
       position: absolute;
       top: 30px;
     }
+
+    .stats .list .gains {
+      border-top: 1px solid $lt-gray;
+      font-size: em(11px);
+      padding: 10px 0;
+    }
   }
 
   .item-set {

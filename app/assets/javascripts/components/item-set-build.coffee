@@ -3,11 +3,14 @@ class LoLA.Components.ItemSetBuild
     @$build = $('.build')
     that    = this
 
+    @$build.empty()
+    $('.builds .stats .list').empty()
+
     @$build.sortable
       group  :
         name : 'item-set'
         pull : false
-      onAdd  : -> if that.$build.find('.item').length == 6 then that.$build.data('sortable').option('disabled', true)
+      onAdd  : -> that.updateSortable()
 
     @$build
       .on 'click', '.item .remove-button', ->
@@ -29,9 +32,22 @@ class LoLA.Components.ItemSetBuild
 
     $(window).on 'resize', => @makeSticky()
 
+  showStats: ->
+    $('.builds .stats .list').empty()
+
+    @$build.find('.item').each ->
+      name        = $(this).find('.name').html()
+      description = $(this).find('.description').html()
+
+      $('.builds .stats .list').append('<div class="gains"><div class="name">' + name + '</div><div class="description">' + description + '</div></div>')
+
   updateSortable: ->
-    if @$build.find('.item').length < 6
+    if @$build.find('.item').length == 6
+      @$build.data('sortable').option('disabled', true)
+    else
       @$build.data('sortable').option('disabled', false)
+
+    @showStats()
 
   # Remove item from build if removed from item set
   resolve: ($item) ->
@@ -45,8 +61,6 @@ class LoLA.Components.ItemSetBuild
     lowerBound   = $('.item-set').offset().top + $('.item-set').height()
 
     $('.builds').css('width', ($('.item-set').width() / 3) + 'px')
-
-    console.log offsetTop + '/' + upperBound
 
     if offsetTop < upperBound && offsetBottom < lowerBound
       $('.builds').addClass('sticky')
