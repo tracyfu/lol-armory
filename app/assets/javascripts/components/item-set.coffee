@@ -36,15 +36,19 @@ class LoLA.Components.ItemSet
         container : 'body'
         trigger   : 'hover'
 
-    @$item.on 'click', -> $(this).remove()
+    @$item.on 'click', '.remove-button', ->
+      $item = $(this).parents('.item')
 
-    @$block.each ->
-      new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
+      that.$itemSet.trigger('lola.change')
+      $item.trigger('lola.remove')
+
+      $item.remove()
+
+    @$block.each -> new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
 
     $('.path, .json-output').html('')
 
     @$item.on 'mousedown', -> $(this).popover('hide')
-    @$item.on 'click', -> that.build.addItem($(this))
     $('.create-button').on 'click', => @generate(@champion)
 
   load: (itemSet) ->

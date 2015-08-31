@@ -40,11 +40,10 @@
                   = render partial: 'shared/item', locals: { item: item }
 
         %article.builds.col-xs-4
-          %h1 Builds
+          %h1 Sample Build
+          %p Drag items from your item set to inspect your final build.
 
           %section.build
-            - (1..6).each do |i|
-              .item
 
       %section.json
         %button.btn.btn-primary.create-button Create Item Set
