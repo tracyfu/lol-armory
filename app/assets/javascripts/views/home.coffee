@@ -1,6 +1,7 @@
 class LoLA.Views.Home
   constructor: ->
     @champion  = key: $('.champion.masthead').attr('data-key')
+    @search    = new LoLA.Components.ChampionFilter()
     @itemStore = new LoLA.Components.ItemStore()
     @itemSet   = new LoLA.Components.ItemSet(@champion)
     that       = this

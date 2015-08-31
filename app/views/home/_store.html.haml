@@ -1,8 +1,7 @@
 %section.item-store
   .toggle &laquo;
 
-  .search-wrapper
-    %input.search{ placeholder: 'Search' }
+  = render partial: 'shared/search'
 
   .store-wrapper
     = render partial: 'store_menu'

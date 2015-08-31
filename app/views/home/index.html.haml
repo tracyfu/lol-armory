@@ -5,10 +5,14 @@
       .patch= Rails.application.config.version
 
     %section.champions
+      %header
+        %h1 Choose a Champion
+        = render partial: 'shared/search'
+
       %ul
         - @champions.each do |champion|
-          %li
-            %button.champion{ "data-id": champion.id }
+          %li.active
+            %button.champion{ class: "#{champion.name.downcase} #{eval(@default_champion.tags.downcase).join(' ')}", 'data-id': champion.id }
               = champion_image_tag(champion.images.first, 'sprite')
               %span.name= champion.name
 
@@ -21,27 +25,26 @@
           %p.title= @default_champion.title
           %p.roles= eval(@default_champion.tags).join(', ')
 
-      .row
-        %section.item-set
-          %h1
-            %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
+      %section.item-set.row
+        %h1
+          %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
 
-          %article.blocks.col-xs-8
-            - @default_champion.recommended_item_set.item_set_blocks.each do |block|
-              %section.block
-                %h1
-                  %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
+        %article.blocks.col-xs-8
+          - @default_champion.recommended_item_set.item_set_blocks.each do |block|
+            %section.block
+              %h1
+                %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
 
-                .items
-                  - block.items.each do |item|
-                    = render partial: 'shared/item', locals: { item: item }
+              .items
+                - block.items.each do |item|
+                  = render partial: 'shared/item', locals: { item: item }
 
-          %article.builds.col-xs-4
-            %h1 Builds
+        %article.builds.col-xs-4
+          %h1 Builds
 
-            %section.build
-              - (1..6).each do |i|
-                .item
+          %section.build
+            - (1..6).each do |i|
+              .item
 
       %section.json
         %button.btn.btn-primary.create-button Create Item Set

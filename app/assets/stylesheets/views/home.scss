@@ -42,22 +42,31 @@
     ul {
       @include clearfix;
       height: 33.3vh;
-      margin: 0 -6px;
+      margin: 30px -6px 0;
       overflow-y: scroll;
+      width: 100%;
 
       li {
         float: left;
-        margin-bottom: 12px;
-        padding: 0 12px;
+        height: 0;
+        opacity: 0;
         text-align: center;
-        width: 10%;
+        transition: opacity .15s, width 0 .15s, height 0 .15s;
+        width: 0;
+
+        &.active {
+          display: block;
+          height: 76px;
+          opacity: 1;
+          width: 10%;
+        }
       }
     }
 
     .champion {
       background: none;
       border: 0;
-      padding: 0;
+      padding: 0 12px 12px;
 
       .image {
         border-radius: 100%;
@@ -92,7 +101,6 @@
       .set-title {
         font-size: em(27px);
         font-weight: 700;
-        width: 100%;
       }
     }
 

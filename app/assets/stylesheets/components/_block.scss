@@ -4,10 +4,6 @@
   margin-bottom: 15px;
   padding: 15px;
 
-  input {
-    width: 100%;
-  }
-
   .items {
     @include clearfix;
     background: $xl-gray;

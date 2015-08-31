@@ -34,7 +34,6 @@
 
     .search {
       user-select: text;
-      width: 100%;
     }
   }
 
@@ -90,6 +89,10 @@
       .info {
         display: inline-block;
         vertical-align: top;
+      }
+
+      .actions {
+        display: none;
       }
 
       .name,
