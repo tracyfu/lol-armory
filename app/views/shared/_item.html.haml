@@ -10,7 +10,10 @@
 
   .item-tooltip
     = item_image_tag(item.images.first, 'sprite')
+    = recipe_tree(item) unless item.from.nil?
     .name= item.name
     .cost #{item.cost.total}g
     .description
       = format_item_description(item.description)
+
+

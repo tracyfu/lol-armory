@@ -67,3 +67,28 @@ h1 {
 @import 'components/block';
 @import 'components/item';
 @import 'components/item-store';
+
+.popover {
+  .description div {
+    display: inline-block;
+  }
+
+  .recipe {
+    border: 1px solid #000;
+    font-size: 0;
+    margin: 2px;
+    padding: 2px;
+    position: relative;
+    text-align: center;
+
+    .recipe {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .image {
+      border-radius: 0;
+      width: 20px;
+    }
+  }
+}

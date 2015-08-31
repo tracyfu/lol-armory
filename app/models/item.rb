@@ -29,4 +29,29 @@
 class Item < ActiveRecord::Base
   has_many :images, as: :imageable, dependent: :destroy
   has_one :cost
+
+  def recipes
+    require 'json'
+    into.nil? ? [] : Item.find(JSON.parse(into))
+  end
+
+  def ingredients
+    recipe = {}
+
+    if from.nil?
+      recipe[:item] = name
+    else
+      require 'json'
+      i = []
+
+      JSON.parse(from).each do |ingredient|
+        i << Item.find(ingredient).ingredients
+      end
+
+      recipe[:item] = name
+      recipe[:ingredients] = i
+    end
+
+    recipe
+  end
 end

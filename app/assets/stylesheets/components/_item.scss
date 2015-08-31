@@ -3,7 +3,7 @@
   float: left;
   margin: 0 5px;
 
-  &.active .image {
+  &.active > .image {
     border: 2px solid #fc0;
   }
 

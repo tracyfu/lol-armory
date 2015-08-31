@@ -46,7 +46,6 @@ class LoLA.Components.ItemStore
 
   # Filter items by search
   search: (query) ->
-    console.log query
     query = $.trim(query.toLowerCase())
 
     @$items.each ->
