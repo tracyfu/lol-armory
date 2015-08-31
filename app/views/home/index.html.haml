@@ -2,7 +2,9 @@
   .content-wrapper
     %header.site-header
       %h1 LoL Armory
-      .patch= Rails.application.config.version
+      .patch Patch #{Rails.application.config.version}
+
+      %p Welcome to LoLArmory created for the Riot API Challenge 2.0. Build and inspect custom item sets from anywhere! Choose a champ or customize the item set below.
 
     %section.champions
       %header
@@ -18,7 +20,8 @@
 
     %section.item-set-builder
       %header.champion.masthead{ 'data-id': @default_champion.id, 'data-key': @default_champion.key }
-        = champion_image_tag(@default_champion.images.first)
+        .image-border
+          .image{ style: "background-image: url(#{Rails.application.config.image_url}champion/#{@default_champion.images.first.full})" }
 
         .details
           %h1.name= @default_champion.name

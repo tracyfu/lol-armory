@@ -7,7 +7,8 @@ $xd-gray: #333;    // 80%
 
 // Typography
 $base-px: 15px;
-$beaufort: 'Beaufort';
+$beaufort: 'Beaufort', serif;
+$spiegel: 'Spiegel', sans-serif;
 $helvetica-neue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 @mixin font {

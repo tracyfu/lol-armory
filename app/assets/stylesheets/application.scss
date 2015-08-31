@@ -11,6 +11,9 @@
 
 body {
   @include font;
+  background: #000 image-url('bg.jpg') top center;
+  background-size: cover;
+  color: #a8814a;
   margin-right: 60px;
 }
 
@@ -35,8 +38,8 @@ input {
 
 @font-face {
   font-family: 'Beaufort';
-  font-weight: 400;
   font-style: italic;
+  font-weight: 400;
   src: asset-url('Beaufort-Italic.woff2') format('woff2'),
        asset-url('Beaufort-Italic.woff')  format('woff'),
        asset-url('Beaufort-Italic.ttf')   format('truetype');
@@ -48,6 +51,23 @@ input {
   src: asset-url('Beaufort-Bold.woff2') format('woff2'),
        asset-url('Beaufort-Bold.woff')  format('woff'),
        asset-url('Beaufort-Bold.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'Spiegel';
+  font-weight: 400;
+  src: asset-url('Spiegel-Regular.woff2') format('woff2'),
+       asset-url('Spiegel-Regular.woff')  format('woff'),
+       asset-url('Spiegel-Regular.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'Spiegel';
+  font-style: italic;
+  font-weight: 400;
+  src: asset-url('Spiegel-Italic.woff2') format('woff2'),
+       asset-url('Spiegel-Italic.woff')  format('woff'),
+       asset-url('Spiegel-Italic.ttf')   format('truetype');
 }
 
 h1,

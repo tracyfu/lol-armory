@@ -30,9 +30,7 @@ class LoLA.Views.Home
       'data-id'  : @champion['id']
       'data-key' : @champion['key']
 
-    $masthead.find('.image').attr
-      src: image
-      alt: @champion['name']
+    $masthead.find('.image').attr(style: 'background-image: url(' + image + ')')
 
     $masthead.find('.name').html(@champion['name'])
     $masthead.find('.title').html(@champion['title'])
