@@ -39,6 +39,7 @@
 
         .copyright,
         .link {
+          color: $lt-tan;
           display: inline-block;
           padding: 0 6px;
         }
@@ -130,7 +131,7 @@
   }
 
   .item-set-builder {
-    .description {
+    .instructions {
       padding: 30px 30px 15px;
     }
   }
@@ -205,9 +206,27 @@
     }
 
     .stats .list .gains {
-      border-top: 1px solid $dk-gold;
       font-size: em(11px);
-      padding: 10px 0;
+      margin-top: 1px;
+      padding: 15px 0;
+      position: relative;
+
+      &::before {
+        background: linear-gradient(left, rgba($dk-gold, 0), $dk-gold, rgba($dk-gold, 0));
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .name {
+        font-size: em(17px);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
     }
   }
 
@@ -220,8 +239,8 @@
       padding: 0 15px;
 
       .set-title {
-        font-size: em(27px);
-        font-weight: 700;
+        font-family: $beaufort;
+        font-size: em(21px);
       }
     }
 

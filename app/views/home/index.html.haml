@@ -33,7 +33,7 @@
 
         %button.create-button{ 'data-toggle': 'modal', 'data-target': '.json.modal' } Create Item Set
 
-      %article.description
+      %article.instructions
         %p Customize this item set. We’ve started you off with the same recommended build you’d find in-game. Drag items from the store on the right to the blocks below. Click to edit block names.
 
       %section.item-set.row
@@ -42,7 +42,7 @@
 
         %article.builds.col-xs-4
           %h1 Sample Build
-          %p Select items from your item set to inspect your final build.
+          %p Select items from your item set to inspect your final build. Drag to re-order.
 
           %section.build.default
             - @items.find(@default_build).each do |item|
