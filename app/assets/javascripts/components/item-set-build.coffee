@@ -7,8 +7,8 @@ class LoLA.Components.ItemSetBuild
     if @$build.hasClass('default')
       @showStats()
     else
-      @$build.empty()
-      $('.builds .stats .list').empty()
+      @disabled = false
+      @$build.add('.builds .stats .list').empty()
 
     @$build.sortable
       group  :
@@ -40,7 +40,6 @@ class LoLA.Components.ItemSetBuild
   update: ->
     @disabled = @$build.find('.item').length > 5
     @showStats()
-    @$build.find('.item').off('click.lola.add')
 
   showStats: ->
     $('.builds .stats .list').empty()

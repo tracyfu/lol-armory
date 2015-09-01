@@ -37,7 +37,7 @@ class LoLA.Components.ItemSet
         trigger   : 'hover'
 
     @$itemSet
-      .on 'click.lola.add', '.item', ->
+      .on 'click', '.item', ->
         unless that.build.disabled
           $(this).clone().removeClass('selected').appendTo('.build')
           $(this).addClass('selected')
