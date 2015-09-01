@@ -250,10 +250,22 @@
   }
 
   .json {
+    font-family: $spiegel;
     padding: 0 30px;
 
+    a {
+      color: $dk-gold;
+      text-decoration: underline;
+    }
+
     .path {
+      background: $xl-gray;
+      border: 1px solid $lt-gray;
+      box-shadow: none;
       margin: 15px 0;
+      overflow: scroll;
+      padding: 6px 12px;
+      white-space: nowrap;
 
       .champion,
       .file {
@@ -265,6 +277,7 @@
       border: 1px solid $lt-gray;
       font-family: monospace;
       min-height: 33.3vh;
+      max-height: 50vh;
       margin: 15px 0;
       overflow: scroll;
       padding: 15px;

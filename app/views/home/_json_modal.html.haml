@@ -3,10 +3,15 @@
     .modal-content
       .modal-header
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Save this item set</h4>
 
       .modal-body
-        .path
+        %p.instructions
+          Copy and save this to the file location specified below. Sorry Mac users,
+          = link_to 'the item set location is way more difficult to get to.', 'https://support.riotgames.com/hc/en-us/articles/201752904-Item-Sets-#h4q2', target: '_blank'
+          Please be careful when saving your item sets.
+
+        .path{ readonly: true }
         %pre.json-output
 
       .modal-footer
