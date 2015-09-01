@@ -14,9 +14,25 @@ class LoLA.Components.ItemSet
 
     @$itemSet.on 'lola.change', -> $('.path, .json-output').html('')
 
+    @$itemSet
+      .on 'click', '.item', ->
+        unless that.build.disabled
+          $(this).clone().removeClass('selected').appendTo('.build')
+          $(this).addClass('selected')
+          that.build.update()
+
+      .on 'click', '.remove-button', (e) ->
+        e.stopPropagation()
+        $item = $(this).parents('.item')
+
+        that.$itemSet.trigger('lola.change')
+        $item.trigger('lola.remove')
+        $item.remove()
+
     @initialize()
 
   initialize: ->
+    console.log 'initialized'
     @$block = @$itemSet.find('.block')
     @$item  = @$itemSet.find('.item')
     @build  = new LoLA.Components.ItemSetBuild()
@@ -35,21 +51,6 @@ class LoLA.Components.ItemSet
         content   : $(this).find('.item-tooltip').html()
         container : 'body'
         trigger   : 'hover'
-
-    @$itemSet
-      .on 'click', '.item', ->
-        unless that.build.disabled
-          $(this).clone().removeClass('selected').appendTo('.build')
-          $(this).addClass('selected')
-          that.build.update()
-
-      .on 'click', '.item .remove-button', (e) ->
-        e.stopPropagation()
-        $item = $(this).parents('.item')
-
-        that.$itemSet.trigger('lola.change')
-        $item.trigger('lola.remove')
-        $item.remove()
 
     @$block.each -> new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
 
