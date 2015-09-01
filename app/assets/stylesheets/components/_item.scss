@@ -5,13 +5,14 @@
   margin: 0 5px;
   padding: 1px;
   position: relative;
+  transition: border-color .15s;
 
   &.active > .image {
     border: 2px solid lighten($dk-gold, 10%);
   }
 
   &.selected {
-    border: 2px solid #9400d3;
+    border-color: #9400d3;
   }
 
   .image {

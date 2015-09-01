@@ -37,20 +37,18 @@ class LoLA.Components.ItemSet
         trigger   : 'hover'
 
     @$itemSet
-    .on 'click', '.item', ->
-      console.log that.build.disabled
-      unless that.build.disabled
-        $(this).clone().removeClass('selected').appendTo('.build')
-        $(this).addClass('selected')
-        that.build.update()
+      .on 'click', '.item', ->
+        unless that.build.disabled
+          $(this).clone().removeClass('selected').appendTo('.build')
+          $(this).addClass('selected')
+          that.build.update()
 
-    .on 'click', '.item .remove-button', ->
-      $item = $(this).parents('.item')
+      .on 'click', '.item .remove-button', ->
+        $item = $(this).parents('.item')
 
-      that.$itemSet.trigger('lola.change')
-      $item.trigger('lola.remove')
-
-      $item.remove()
+        that.$itemSet.trigger('lola.change')
+        $item.trigger('lola.remove')
+        $item.remove()
 
     @$block.each -> new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
 

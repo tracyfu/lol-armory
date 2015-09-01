@@ -7,30 +7,41 @@ class LoLA.Components.ItemSetBuild
     @$build.empty()
     $('.builds .stats .list').empty()
 
+    @$build.sortable
+      group  :
+        name : 'item-set-build'
+        pull : false
+        put  : false
+
     @$build
       .on 'click', '.item .remove-button', ->
         $item = $(this).parents('.item')
-        $item.remove()
         $item.trigger('lola.remove')
+        $item.remove()
+
+      .on 'lola.remove', '.item', ->
         that.update()
 
-      .on 'lola.remove', => update()
+        removedItem = '.item[data-id="' + $(this).attr('data-id') + '"]'
+        unless that.$build.find(removedItem).length > 1
+          $('.item-set').find(removedItem).removeClass('selected')
 
     $('.item-set .item').on 'lola.remove', -> that.resolve($(this))
 
     # Locks build in view
-    $('.content-wrapper').on 'scroll', ->
-      if typeof timeout != 'undefined'
-        clearTimeout(timeout)
-        timeout = null
+    # $('.content-wrapper').on 'scroll', ->
+    #   if typeof timeout != 'undefined'
+    #     clearTimeout(timeout)
+    #     timeout = null
 
-      timeout = setTimeout(that.makeSticky, 250)
+    #   timeout = setTimeout(that.makeSticky, 250)
 
-    $(window).on 'resize', => @makeSticky()
+    # $(window).on 'resize', => @makeSticky()
 
   update: ->
     @disabled = @$build.find('.item').length > 5
     @showStats()
+    @$build.find('.item').off()
 
   showStats: ->
     $('.builds .stats .list').empty()
