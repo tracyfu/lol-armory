@@ -4,8 +4,11 @@ class LoLA.Components.ItemSetBuild
     @disabled = false
     that      = this
 
-    @$build.empty()
-    $('.builds .stats .list').empty()
+    if @$build.hasClass('default')
+      @showStats()
+    else
+      @$build.empty()
+      $('.builds .stats .list').empty()
 
     @$build.sortable
       group  :
@@ -14,7 +17,8 @@ class LoLA.Components.ItemSetBuild
         put  : false
 
     @$build
-      .on 'click', '.item .remove-button', ->
+      .on 'click', '.item .remove-button', (e) ->
+        e.stopPropagation()
         $item = $(this).parents('.item')
         $item.trigger('lola.remove')
         $item.remove()
@@ -41,7 +45,7 @@ class LoLA.Components.ItemSetBuild
   update: ->
     @disabled = @$build.find('.item').length > 5
     @showStats()
-    @$build.find('.item').off()
+    @$build.find('.item').off('click.lola.add')
 
   showStats: ->
     $('.builds .stats .list').empty()

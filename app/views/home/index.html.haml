@@ -44,7 +44,9 @@
           %h1 Sample Build
           %p Select items from your item set to inspect your final build.
 
-          %section.build
+          %section.build.default
+            - @items.find(@default_build).each do |item|
+              = render partial: 'shared/item', locals: { item: item }
 
           %article.stats
             %h2 Stats

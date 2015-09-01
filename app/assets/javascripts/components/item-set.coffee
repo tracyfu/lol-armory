@@ -37,13 +37,14 @@ class LoLA.Components.ItemSet
         trigger   : 'hover'
 
     @$itemSet
-      .on 'click', '.item', ->
+      .on 'click.lola.add', '.item', ->
         unless that.build.disabled
           $(this).clone().removeClass('selected').appendTo('.build')
           $(this).addClass('selected')
           that.build.update()
 
-      .on 'click', '.item .remove-button', ->
+      .on 'click', '.item .remove-button', (e) ->
+        e.stopPropagation()
         $item = $(this).parents('.item')
 
         that.$itemSet.trigger('lola.change')
@@ -62,6 +63,7 @@ class LoLA.Components.ItemSet
 
     @$setTitle.val(@defaults['title'])
     @$itemSet.find('.block').remove()
+    $('.build').removeClass('default')
 
     $.each itemSet['item_set_blocks'], (bi, block) ->
       $itemSet = that.$itemSet
