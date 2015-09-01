@@ -10,10 +10,17 @@
   </div>
 
   <div class="item-tooltip">
-    <div class="image" style="background: url('<%= image %>') <%= imageX %> <%= imageY %>; width: <%= imageW %>px; height: <%= imageH %>px;"></div>
-    <%= recipe %>
-    <div class="name"><%= name %></div>
-    <div class="cost"><%= cost == 0 ? 'Free' : cost %></div>
+    <div class="basic">
+      <div class="image" style="background: url('<%= image %>') <%= imageX %> <%= imageY %>; width: <%= imageW %>px; height: <%= imageH %>px;"></div>
+      <div class="info">
+        <div class="name"><%= name %></div>
+        <div class="cost"><%= cost == 0 ? 'Free' : cost %></div>
+      </div>
+    </div>
     <div class="description"><%= description %></div>
+
+    <% if (recipe) { %>
+      <div class="recipe-wrapper"><%= recipe %></div>
+    <% } %>
   </div>
 </div>

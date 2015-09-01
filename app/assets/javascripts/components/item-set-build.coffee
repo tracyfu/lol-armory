@@ -1,7 +1,7 @@
 class LoLA.Components.ItemSetBuild
   constructor: ->
     @$build   = $('.build')
-    @disabled = false
+    @disabled = true
     that      = this
 
     if @$build.hasClass('default')
@@ -22,6 +22,7 @@ class LoLA.Components.ItemSetBuild
         $item = $(this).parents('.item')
         $item.trigger('lola.remove')
         $item.remove()
+        that.update()
 
       .on 'lola.remove', '.item', ->
         that.update()

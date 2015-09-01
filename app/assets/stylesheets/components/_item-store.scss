@@ -78,7 +78,8 @@
       transition: color .15s;
       width: 100%;
 
-      &.active {
+      &:hover,
+      .active {
         color: $lt-tan;
       }
     }

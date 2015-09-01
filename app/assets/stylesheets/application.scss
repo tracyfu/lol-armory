@@ -99,12 +99,52 @@ h1 {
 @import 'components/item-store';
 
 .popover {
+  background: linear-gradient(to bottom, $xd-gray, #131313);
+  border: 1px solid $dk-gold;
+  border-radius: 3px;
+
+  &.left > .arrow {
+    border-left-color: $dk-gold;
+
+    &::after {
+      border-left-color: #222;
+    }
+  }
+
+  &.right > .arrow {
+    border-right-color: $dk-gold;
+
+    &::after {
+      border-right-color: #222;
+    }
+  }
+
+  .basic {
+    align-items: flex-start;
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  .image {
+    border: 1px solid $dk-gold;
+  }
+
+  .info {
+    padding: 0 10px;
+    flex: grow;
+  }
+
   .description div {
     display: inline-block;
   }
 
+  .recipe-wrapper > .recipe {
+    margin: 15px 0;
+  }
+
   .recipe {
-    border: 1px solid #000;
+    border: 1px solid darken($dk-gold, 25%);
+    float: left;
     font-size: 0;
     margin: 2px;
     padding: 2px;
