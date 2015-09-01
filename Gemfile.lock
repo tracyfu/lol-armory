@@ -74,6 +74,8 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.6.0)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.6)
@@ -210,6 +212,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.0)
   coffee-rails (~> 4.1.0)
   ejs
+  font-awesome-rails
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails

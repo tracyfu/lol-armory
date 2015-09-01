@@ -13,7 +13,7 @@ $dk-teal : #0c2830;
 $base-px: 15px;
 $beaufort: 'Beaufort', serif;
 $spiegel: 'Spiegel', sans-serif;
-$helvetica-neue: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$fontawesome: FontAwesome;
 
 @mixin font {
   font: 400 #{$base-px}/1.5 $beaufort;

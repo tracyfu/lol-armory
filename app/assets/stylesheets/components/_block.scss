@@ -1,8 +1,24 @@
-  .item-set .block {
+.item-set .block {
   @include clearfix;
   border: 1px solid rgba($dk-gold, .75);
   margin-bottom: 15px;
   padding: 15px;
+
+  > h1 {
+    position: relative;
+
+    &::after {
+      content: '\f040';
+      font-family: $fontawesome;
+      position: absolute;
+      right: 10px;
+      top: 8px;
+    }
+
+    .block-title {
+      padding-right: 40px;
+    }
+  }
 
   .items {
     @include clearfix;

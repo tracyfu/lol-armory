@@ -237,10 +237,20 @@
     > h1 {
       margin: 0 0 30px;
       padding: 0 15px;
+      position: relative;
+
+      &::after {
+        content: '\f040';
+        font-family: $fontawesome;
+        position: absolute;
+        right: 30px;
+        top: 15px;
+      }
 
       .set-title {
         font-family: $beaufort;
         font-size: em(21px);
+        padding-right: 45px;
       }
     }
 
