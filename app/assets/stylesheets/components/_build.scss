@@ -1,8 +1,12 @@
 .build {
+  $item-height : 60px;
+  $item-width  : 60px;
+
   @include clearfix;
   border: 1px solid lighten($dk-teal, 5%);
-  min-height: 50px;
-  width: 100%;
+  height: ($item-height * 2) + 12;
+  padding: 5px;
+  width: ($item-width * 3 ) + 12;
 
   .item {
     float: left;

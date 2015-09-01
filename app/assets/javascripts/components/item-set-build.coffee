@@ -1,24 +1,20 @@
 class LoLA.Components.ItemSetBuild
   constructor: ->
-    @$build = $('.build')
-    that    = this
+    @$build   = $('.build')
+    @disabled = false
+    that      = this
 
     @$build.empty()
     $('.builds .stats .list').empty()
-
-    @$build.sortable
-      group  :
-        name : 'item-set'
-        pull : false
-      onAdd  : -> that.updateSortable()
 
     @$build
       .on 'click', '.item .remove-button', ->
         $item = $(this).parents('.item')
         $item.remove()
         $item.trigger('lola.remove')
+        that.update()
 
-      .on 'lola.remove', => @updateSortable()
+      .on 'lola.remove', => update()
 
     $('.item-set .item').on 'lola.remove', -> that.resolve($(this))
 
@@ -32,6 +28,10 @@ class LoLA.Components.ItemSetBuild
 
     $(window).on 'resize', => @makeSticky()
 
+  update: ->
+    @disabled = @$build.find('.item').length > 5
+    @showStats()
+
   showStats: ->
     $('.builds .stats .list').empty()
 
@@ -41,18 +41,9 @@ class LoLA.Components.ItemSetBuild
 
       $('.builds .stats .list').append('<div class="gains"><div class="name">' + name + '</div><div class="description">' + description + '</div></div>')
 
-  updateSortable: ->
-    if @$build.find('.item').length == 6
-      @$build.data('sortable').option('disabled', true)
-    else
-      @$build.data('sortable').option('disabled', false)
-
-    @showStats()
-
   # Remove item from build if removed from item set
   resolve: ($item) ->
     @$build.find('.item[data-id="' + $item.attr('data-id') + '"]').remove()
-    @updateSortable()
 
   makeSticky: =>
     offsetTop    = $('.builds').offset().top + 360

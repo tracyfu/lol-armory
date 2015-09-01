@@ -25,7 +25,7 @@ class LoLA.Components.ItemSet
     @$itemSet.find('.items').sortable
       group  :
         name : 'item-set'
-        pull : 'clone'
+        pull : false
         put  : ['items']
       onAdd  : (e) -> $(e.item).data('bs.popover').options.placement = 'right'
 
@@ -36,7 +36,15 @@ class LoLA.Components.ItemSet
         container : 'body'
         trigger   : 'hover'
 
-    @$item.on 'click', '.remove-button', ->
+    @$itemSet
+    .on 'click', '.item', ->
+      console.log that.build.disabled
+      unless that.build.disabled
+        $(this).clone().removeClass('selected').appendTo('.build')
+        $(this).addClass('selected')
+        that.build.update()
+
+    .on 'click', '.item .remove-button', ->
       $item = $(this).parents('.item')
 
       that.$itemSet.trigger('lola.change')

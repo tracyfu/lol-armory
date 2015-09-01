@@ -1,11 +1,17 @@
 .item {
+  border: 2px solid transparent;
   cursor: pointer;
   float: left;
   margin: 0 5px;
+  padding: 1px;
   position: relative;
 
   &.active > .image {
     border: 2px solid lighten($dk-gold, 10%);
+  }
+
+  &.selected {
+    border: 2px solid #9400d3;
   }
 
   .image {
