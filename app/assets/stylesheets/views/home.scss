@@ -212,6 +212,17 @@
       margin: 1em 0;
     }
 
+    .clear-button {
+      align-self: flex-end;
+      background: linear-gradient(to bottom, $xd-gray, #131313);
+      border: 1px solid $dk-gold;
+      color: mix(#cab5a2, #ffe09d);
+      font-size: em(13px);
+      margin: 0 0 15px;
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+
     .stats .list .gains {
       font-size: em(11px);
       margin-top: 1px;
