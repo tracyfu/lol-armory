@@ -19,12 +19,18 @@
       margin: 30px 30px 15px;
 
       h1 {
+        color: $lt-tan;
+        font-size: em(30px);
         margin-bottom: 0;
       }
 
       .patch {
         font-size: em(11px);
         margin-bottom: 15px;
+      }
+
+      p {
+        font-size: em(17px);
       }
     }
 
@@ -132,6 +138,7 @@
 
   .item-set-builder {
     .instructions {
+      font-size: em(17px);
       padding: 30px 30px 15px;
     }
   }
@@ -223,7 +230,7 @@
       }
 
       .name {
-        font-size: em(17px);
+        font-size: em(15px, 11px);
         font-weight: 700;
         margin-bottom: 6px;
       }

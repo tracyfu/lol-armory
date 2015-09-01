@@ -1,6 +1,6 @@
 .item-set .block {
   @include clearfix;
-  border: 1px solid rgba($dk-gold, .75);
+  border: 1px solid rgba($dk-gold, .5);
   margin-bottom: 15px;
   padding: 15px;
 
@@ -22,7 +22,7 @@
 
   .items {
     @include clearfix;
-    background: #222;
+    background: linear-gradient(to right, rgba($dk-teal, .75), rgba($dk-teal, 0));
     padding: 10px 5px 5px;
   }
 }

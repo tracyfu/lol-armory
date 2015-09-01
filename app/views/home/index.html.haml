@@ -40,6 +40,16 @@
         %h1
           %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
 
+        %article.blocks.col-xs-8
+          - @default_champion.recommended_item_set.item_set_blocks.each do |block|
+            %section.block
+              %h1
+                %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
+
+              .items
+                - block.items.each do |item|
+                  = render partial: 'shared/item', locals: { item: item }
+
         %article.builds.col-xs-4
           %h1 Sample Build
           %p Select items from your item set to inspect your final build. Drag to re-order.
@@ -51,16 +61,6 @@
           %article.stats
             %h2 Stats
             .list
-
-        %article.blocks.col-xs-8
-          - @default_champion.recommended_item_set.item_set_blocks.each do |block|
-            %section.block
-              %h1
-                %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
-
-              .items
-                - block.items.each do |item|
-                  = render partial: 'shared/item', locals: { item: item }
 
     %footer
       .legal LoL Armory isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends &copy; Riot Games, Inc.
