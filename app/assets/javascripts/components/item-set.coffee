@@ -32,7 +32,6 @@ class LoLA.Components.ItemSet
     @initialize()
 
   initialize: ->
-    console.log 'initialized'
     @$block = @$itemSet.find('.block')
     @$item  = @$itemSet.find('.item')
     @build  = new LoLA.Components.ItemSetBuild()
