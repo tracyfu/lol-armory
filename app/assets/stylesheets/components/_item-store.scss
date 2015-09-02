@@ -55,13 +55,13 @@
     flex-direction: row;
   }
 
-  .tags {
+  .filters {
     height: 90vh;
     overflow-y: auto;
     width: 170px;
 
     .group {
-      > button {
+      > .filter {
         font-weight: 700;
       }
 
@@ -70,7 +70,7 @@
       }
     }
 
-    button {
+    .filter {
       border: 0;
       background: none;
       padding: 0;
@@ -79,7 +79,7 @@
       width: 100%;
 
       &:hover,
-      .active {
+      &.active {
         color: $lt-tan;
       }
     }

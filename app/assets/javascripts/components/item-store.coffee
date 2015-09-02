@@ -12,7 +12,7 @@ class LoLA.Components.ItemStore
       sort     : false
       onRemove : -> that.$items = that.$store.find('.item')
 
-    @$store.find('.item').each ->
+    @$items.each ->
       $(this).popover
         html      : true
         content   : $(this).find('.item-tooltip').html()
@@ -22,34 +22,14 @@ class LoLA.Components.ItemStore
         delay     :
           show    : 150
 
-    @$store.find('.toggle').on 'click', -> $('.content').toggleClass('store-open')
-    @$store.find('.search').on 'keyup', -> that.search($(this).val())
-    @$items.on 'mousedown', -> $(this).popover('hide')
-    @$store.find('.tags').on 'click', 'button', -> that.filter($(this))
+    @$store
+      .on 'click', '.toggle', -> $('.content').toggleClass('store-open')
+      .on 'mousedown', '.item', -> $(this).popover('hide')
 
-  # Filter items by tags
-  filter: ($filter) ->
-    @$store.find('.search').val('')
-    @$store.find('.tags button').removeClass('active')
-    $filter.addClass('active')
+    @search = new LoLA.Components.Search @$store.find('.search'), @$items
 
-    query = $filter.attr('data-tags')
-
-    if query == 'All'
-      @$items.show()
-    else
-      query = query.toLowerCase().split(',')
-
-      @$items.each ->
-        tags = $(this).attr('class').split(' ')
-        if _.intersection(query, tags).length > 0 then $(this).show() else $(this).hide()
-
-  # Filter items by search
-  search: (query) ->
-    query = $.trim(query.toLowerCase())
-
-    @$items.each ->
-      if $(this).attr('data-name').toLowerCase().indexOf(query) > -1
-        $(this).show()
-      else
-        $(this).hide()
+    @filters = @$store.find('.filter').map ->
+      new LoLA.Components.Search $(this), that.$items, 'filter', ($trigger) ->
+        $('.item-store .search').val('')
+        $('.item-store .filter').removeClass('active')
+        $trigger.addClass('active')
