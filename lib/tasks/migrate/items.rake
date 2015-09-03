@@ -63,5 +63,6 @@ namespace :migrate do
     log.close
 
     Rake::Task['items:fix_descriptions'].invoke
+    Rake::Task['items:fix_data'].invoke
   end
 end
