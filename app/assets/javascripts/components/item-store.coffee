@@ -26,10 +26,4 @@ class LoLA.Components.ItemStore
       .on 'click', '.toggle', -> $('.content').toggleClass('store-open')
       .on 'mousedown', '.item', -> $(this).popover('hide')
 
-    @search = new LoLA.Components.Search @$store.find('.search'), @$items
-
-    @filters = @$store.find('.filter').map ->
-      new LoLA.Components.Search $(this), that.$items, 'filter', ($trigger) ->
-        $('.item-store .search').val('')
-        $('.item-store .filter').removeClass('active')
-        $trigger.addClass('active')
+    @searchable = new LoLA.Components.Searchable @$store, @$items
