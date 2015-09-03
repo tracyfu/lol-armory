@@ -1,6 +1,6 @@
 class LoLA.Components.ChampionFilter
   constructor: ->
-    @$search    = $('.champions .search')
+    @$search    = $('.champions .filter')
     @$champions = $('.champions .champion')
     that        = this
 
