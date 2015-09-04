@@ -20,6 +20,7 @@ class LoLA.Views.Home
         @recommendedItemSet = response.recommended_item_set
 
         @updateMasthead()
+        @itemSet.champion = @champion
         @itemSet.load(@recommendedItemSet)
 
   updateMasthead: ->
