@@ -32,7 +32,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 3
+set :keep_releases, 1
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
@@ -43,7 +43,7 @@ set :rbenv_roles, :all
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
+  after :restart, :cleanup, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
