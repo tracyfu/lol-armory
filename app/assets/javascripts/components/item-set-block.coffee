@@ -11,3 +11,7 @@ class LoLA.Components.ItemSetBlock
         if $(this).val() == ''
           $(this).val($(this).attr('data-title'))
 
+      .on 'keyup', 'input', (e) ->
+        if e.which == 13
+          $(this).blur()
+

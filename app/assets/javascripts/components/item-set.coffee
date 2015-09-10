@@ -14,6 +14,10 @@ class LoLA.Components.ItemSet
         if $(this).val() == ''
           $(this).val(that.defaults['title'])
 
+      .on 'keyup', 'input', (e) ->
+        if e.which == 13
+          $(this).blur()
+
     @$itemSet.on 'lola.change', -> $('.path, .json-output').html('')
 
     @$itemSet
