@@ -11,10 +11,11 @@ class LoLA.Components.ItemSetBuild
       @$build.add('.builds .stats .list').empty()
 
     @$build.sortable
-      group  :
-        name : 'item-set-build'
-        pull : false
-        put  : false
+      group     :
+        name    : 'item-set-build'
+        pull    : false
+        put     : false
+      animation : 150
 
     @$build
       .on 'click', '.item .remove-button', (e) ->

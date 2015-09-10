@@ -2,7 +2,7 @@ class LoLA.Components.ItemStore
   constructor: ->
     @$store = $('.item-store')
     @$items = @$store.find('.item')
-    that    = this
+    _this   = this
 
     @$store.find('.items').sortable
       group    :
@@ -10,7 +10,7 @@ class LoLA.Components.ItemStore
         pull   : 'clone'
         put    : false
       sort     : false
-      onRemove : -> that.$items = that.$store.find('.item')
+      onRemove : -> _this.$items = _this.$store.find('.item')
 
     @$items.each ->
       $(this).popover

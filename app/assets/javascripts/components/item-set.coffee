@@ -38,11 +38,13 @@ class LoLA.Components.ItemSet
     that    = this
 
     @$itemSet.find('.items').sortable
-      group  :
-        name : 'item-set'
-        pull : false
-        put  : ['items']
-      onAdd  : (e) -> $(e.item).data('bs.popover').options.placement = 'right'
+      group     :
+        name    : 'item-set'
+        pull    : false
+        put     : ['items']
+      draggable : '.item'
+      animation : 150
+      onAdd     : (e) -> $(e.item).data('bs.popover').options.placement = 'right'
 
     @$item.each ->
       $(this).popover
