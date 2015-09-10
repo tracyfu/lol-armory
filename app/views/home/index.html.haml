@@ -37,14 +37,14 @@
         %p Customize this item set. We’ve started you off with the same recommended build you’d find in-game. Drag items from the store on the right to the blocks below. Click to edit block names.
 
       %section.item-set.row
-        %h1
-          %input.set-title{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
+        %h1.set-title
+          %input{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
 
         %article.blocks.col-xs-8
           - @default_champion.recommended_item_set.item_set_blocks.each do |block|
             %section.block
-              %h1
-                %input.block-title{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
+              %h1.block-title
+                %input{ value: block.block_type, 'data-title': block.block_type, maxlength: 50, placeholder: 'Block Title' }
 
               .items
                 - block.items.each do |item|

@@ -4,18 +4,19 @@
   margin-bottom: 15px;
   padding: 15px;
 
-  > h1 {
+  .block-title {
     position: relative;
 
     &::after {
       content: '\f040';
+      cursor: pointer;
       font-family: $fontawesome;
       position: absolute;
       right: 10px;
       top: 8px;
     }
 
-    .block-title {
+    input {
       padding-right: 40px;
     }
   }

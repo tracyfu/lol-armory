@@ -6,11 +6,13 @@ class LoLA.Components.ItemSet
     that       = this
 
     @$setTitle
-      .on 'focus', ->
-        $(this).val('')
-        that.$itemSet.trigger('lola.change')
+      .on 'click', =>
+        @$setTitle.find('input').val('')
+        @$itemSet.trigger('lola.change')
 
-      .on 'blur' , -> if $(this).val() == '' then $(this).val(that.defaults['title'])
+      .on 'blur', 'input', ->
+        if $(this).val() == ''
+          $(this).val(that.defaults['title'])
 
     @$itemSet.on 'lola.change', -> $('.path, .json-output').html('')
 

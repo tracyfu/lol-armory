@@ -252,20 +252,21 @@
     margin: 0;
     padding: 15px;
 
-    > h1 {
+    .set-title {
       margin: 0 0 30px;
       padding: 0 15px;
       position: relative;
 
       &::after {
         content: '\f040';
+        cursor: pointer;
         font-family: $fontawesome;
         position: absolute;
         right: 30px;
         top: 15px;
       }
 
-      .set-title {
+      input {
         font-family: $beaufort;
         font-size: em(21px);
         padding-right: 45px;
