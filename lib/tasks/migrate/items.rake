@@ -28,7 +28,7 @@ namespace :migrate do
         new_count = new_count + 1
       end
 
-      if item.update(i.except(:image, :gold))
+      if item.update(i.except(:image, :gold, :maps))
         if i.key?(:image)
           i[:image][:imageable] = item
 
