@@ -2,7 +2,7 @@ class LoLA.Components.ItemSet
   constructor: (@champion) ->
     @$itemSet  = $('.item-set')
     @$setTitle = @$itemSet.find('.set-title')
-    @defaults  = title: 'Recommended'
+    @defaults  = title: 'Recommended Items'
     that       = this
 
     @$setTitle
@@ -12,7 +12,7 @@ class LoLA.Components.ItemSet
 
       .on 'blur', 'input', ->
         if $(this).val() == ''
-          $(this).val(that.defaults['title'])
+          $(this).val(that.title())
 
       .on 'keyup', 'input', (e) ->
         if e.which == 13
@@ -66,10 +66,13 @@ class LoLA.Components.ItemSet
     @$item.on 'mousedown', -> $(this).popover('hide')
     $('.create-button').on 'click', => @generate(@champion)
 
+  title: =>
+    @champion['name'] + "'s " + @defaults['title']
+
   load: (itemSet) ->
     that = this
 
-    @$setTitle.val(@defaults['title'])
+    @$setTitle.find('input').val(@title())
     @$itemSet.find('.block').remove()
     $('.build').removeClass('default')
 
@@ -104,7 +107,7 @@ class LoLA.Components.ItemSet
 
     $('.path').html(path + file)
 
-    title = $('<div>').text(@$setTitle.val()).html()
+    title = $('<div>').text(@$setTitle.find('input').val()).html()
 
     itemSet =
       title    : title

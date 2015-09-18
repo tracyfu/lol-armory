@@ -22,7 +22,7 @@
               %span.name= champion.name
 
     %section.item-set-builder
-      %header.champion.masthead{ 'data-id': @default_champion.id, 'data-key': @default_champion.key }
+      %header.champion.masthead{ 'data-id': @default_champion.id, 'data-key': @default_champion.key, 'data-name': @default_champion.name }
         .image-border
           .image{ style: "background-image: url(#{Rails.application.config.image_url}champion/#{@default_champion.images.first.full})" }
 
@@ -38,7 +38,7 @@
 
       %section.item-set.row
         %h1.set-title
-          %input{ value: 'Recommended', maxlength: 50, placeholder: 'Give your item set a title' }
+          %input{ value: "Leona's Recommended Items", maxlength: 50, placeholder: 'Give your item set a title' }
 
         %article.blocks.col-xs-8
           - @default_champion.recommended_item_set.item_set_blocks.each do |block|
