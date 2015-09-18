@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups)
 module LolArmory
   class Application < Rails::Application
     config.cdn = 'http://ddragon.leagueoflegends.com/cdn'
-    config.version = '5.17.1'
+    config.version = '5.18.1'
     config.image_url = "#{config.cdn}/#{config.version}/img/"
 
     # Settings in config/environments/* take precedence over those specified here.
