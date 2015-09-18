@@ -4,7 +4,7 @@ class LoLA.Components.ItemSetBlock
 
     @$blockTitle
       .on 'click', =>
-        @$blockTitle.find('input').val('')
+        @$blockTitle.find('input').focus().val('')
         @$itemSet.trigger('lola.change')
 
       .on 'blur', 'input', ->
