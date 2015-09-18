@@ -3,7 +3,7 @@ class LoLA.Components.ItemSet
     @$itemSet  = $('.item-set')
     @$setTitle = @$itemSet.find('.set-title')
     @defaults  = title: 'Recommended Items'
-    that       = this
+    _this      = this
 
     @$setTitle
       .on 'click', =>
@@ -12,7 +12,7 @@ class LoLA.Components.ItemSet
 
       .on 'blur', 'input', ->
         if $(this).val() == ''
-          $(this).val(that.title())
+          $(this).val(_this.title())
 
       .on 'keyup', 'input', (e) ->
         if e.which == 13
@@ -22,16 +22,16 @@ class LoLA.Components.ItemSet
 
     @$itemSet
       .on 'click', '.item', ->
-        unless that.build.disabled
+        unless _this.build.disabled
           $(this).clone().removeClass('selected').appendTo('.build')
           $(this).addClass('selected')
-          that.build.update()
+          _this.build.update()
 
       .on 'click', '.remove-button', (e) ->
         e.stopPropagation()
         $item = $(this).parents('.item')
 
-        that.$itemSet.trigger('lola.change')
+        _this.$itemSet.trigger('lola.change')
         $item.trigger('lola.remove')
         $item.remove()
 
@@ -41,7 +41,7 @@ class LoLA.Components.ItemSet
     @$block = @$itemSet.find('.block')
     @$item  = @$itemSet.find('.item')
     @build  = new LoLA.Components.ItemSetBuild()
-    that    = this
+    _this   = this
 
     @$itemSet.find('.items').sortable
       group     :
@@ -59,7 +59,7 @@ class LoLA.Components.ItemSet
         container : 'body'
         trigger   : 'hover'
 
-    @$block.each -> new LoLA.Components.ItemSetBlock(that.$itemSet, $(this))
+    @$block.each -> new LoLA.Components.ItemSetBlock(_this.$itemSet, $(this))
 
     $('.path, .json-output').html('')
 
@@ -70,14 +70,14 @@ class LoLA.Components.ItemSet
     @champion['name'] + "'s " + @defaults['title']
 
   load: (itemSet) ->
-    that = this
+    _this = this
 
     @$setTitle.find('input').val(@title())
     @$itemSet.find('.block').remove()
     $('.build').removeClass('default')
 
     $.each itemSet['item_set_blocks'], (bi, block) ->
-      $itemSet = that.$itemSet
+      $itemSet = _this.$itemSet
 
       $block = $(JST['templates/block'](title: block['block_type'], placeholder: 'Block Title'))
       $itemSet.find('.blocks').append($block)
