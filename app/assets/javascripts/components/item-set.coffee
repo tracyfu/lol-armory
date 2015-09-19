@@ -8,7 +8,7 @@ class LoLA.Components.ItemSet
     @$setTitle
       .on 'click', =>
         @$setTitle.find('input').focus().val('')
-        @$itemSet.trigger('lola.change')
+        @$itemSet.trigger('lola.itemset.change')
 
       .on 'blur', 'input', ->
         if $(this).val() == ''
@@ -18,7 +18,7 @@ class LoLA.Components.ItemSet
         if e.which == 13
           $(this).blur()
 
-    @$itemSet.on 'lola.change', -> $('.path, .json-output').html('')
+    @$itemSet.on 'lola.itemset.change', -> $('.path, .json-output').html('')
 
     @$itemSet
       .on 'click', '.item', ->
@@ -31,7 +31,7 @@ class LoLA.Components.ItemSet
         e.stopPropagation()
         $item = $(this).parents('.item')
 
-        _this.$itemSet.trigger('lola.change')
+        _this.$itemSet.trigger('lola.itemset.change')
         $item.trigger('lola.remove')
         $item.remove()
 
@@ -42,15 +42,6 @@ class LoLA.Components.ItemSet
     @$item  = @$itemSet.find('.item')
     @build  = new LoLA.Components.ItemSetBuild()
     _this   = this
-
-    @$itemSet.find('.items').sortable
-      group     :
-        name    : 'item-set'
-        pull    : false
-        put     : ['items']
-      draggable : '.item'
-      animation : 150
-      onAdd     : (e) -> $(e.item).data('bs.popover').options.placement = 'right'
 
     @$item.each ->
       $(this).popover
@@ -119,7 +110,7 @@ class LoLA.Components.ItemSet
       blocks   : []
 
     @$itemSet.find('.block').each ->
-      title = $('<div>').text($(this).find('.block-title').val()).html()
+      title = $('<div>').text($(this).find('.block-title input').val()).html()
 
       block =
         type                : title
