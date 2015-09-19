@@ -17,7 +17,13 @@
     }
 
     input {
+      border-color: lighten($dk-teal, 5%);
       padding-right: 40px;
+      transition: border .15s;
+
+      &:hover {
+        border-color: lighten($dk-teal, 10%);
+      }
     }
   }
 
